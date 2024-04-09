@@ -57,7 +57,7 @@ export class ProfesseursComponent implements OnInit {
       },
       {
         'label': 'Mes étudiants',
-        'icon': '',
+        'icon': 'person_outline',
         'link': 'etudiants'
       },
       {
