@@ -1,0 +1,51 @@
+mat-card {
+  width: 70%;
+}
+
+mat-form-field {
+  width: 80% !important;
+}
+
+button {
+  width: 100%;
+}
+
+.p-label {
+  min-width: 25%;
+  text-align: end;
+  padding-right: 3%;
+}
+
+.p-and {
+  min-width: 5%;
+  text-align: center;
+}
+
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+  margin-left: 16px;
+}
+
+.search-container mat-form-field + mat-form-field {
+  margin-left: 8px;
+}
+
+.search-container mat-form-field {
+  width: 220px;
+}
+
+.search-container form {
+  margin-bottom: 20px;
+}
+
+.search-container form > * {
+  margin: 12px 0;
+}
+
+.search-container .mat-radio-button {
+  margin: 0 12px;
+}
+
+.search-form-fields {
+  display: flex;
+  align-items: flex-start;
+}

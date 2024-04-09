@@ -1,0 +1,54 @@
+mat-stepper {
+  width: 100%;
+}
+
+.mat-stepper-vertical {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+.my-next {
+  margin-left: 15px;
+}
+
+.description {
+  border-radius: 20px;
+  width: 80%;
+  height: 85%;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.description-header {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  height: 15%;
+  background-color: rgba(63,81,181, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+}
+
+.description-content {
+  padding: 4% 8% 8% 8%;
+}
+
+.assignment-titre {
+  text-align: center;
+  text-decoration: underline;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.on-completion {
+  padding-top: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+.on-completion img {
+  width: 30%;
+}

@@ -1,0 +1,30 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1>Université Côte d'Azur</h1>
+  <img src="{{imagePath}}" class="profile-image" />
+  <h2>{{prenom}} {{nom}}</h2>
+</mat-toolbar>
+
+<mat-sidenav-container autosize>
+  <mat-sidenav  [mode]="isMobile ? 'over' : 'side'" [opened]="isMobile ? 'false' : 'true'">
+    <mat-nav-list>
+    @for (menu of menus; track menu.label) {
+      <a mat-list-item routerLink="{{menu.link}}">
+        <span class="entry">
+           <mat-icon>{{menu.icon}}</mat-icon>
+           @if (!isCollapsed) {
+             <span>{{menu.label}}</span>
+           }
+        </span>
+      </a>
+    }
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

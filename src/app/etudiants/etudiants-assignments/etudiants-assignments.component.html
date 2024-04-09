@@ -1,0 +1,40 @@
+<div class="container">
+
+  <div id="globalLoader" class="global-loader"><h1>CHARGEMENT ...</h1></div>
+
+  <div>
+    <input class="search-input" type="search" placeholder="Rechercher..." [(ngModel)]="searchText" />
+  </div>
+
+  <h1>{{ titre }}</h1>
+
+  <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)" [length]="totalPages"
+    [pageSize]="limit" [showFirstLastButtons]="true" [pageSizeOptions]="[5, 10, 25]" [pageIndex]="page"
+    aria-label="Select page">
+  </mat-paginator>
+
+  <h2>Version avec Card</h2>
+  <mat-divider></mat-divider>
+  &nbsp;&nbsp;&nbsp;
+  <div class="div-card" >
+    <div *ngFor="let a of assignments|filter:searchText">
+      <mat-card class="sublime-card">
+        <mat-card-header>
+          <mat-card-title>{{a.titre}}</mat-card-title>
+          <mat-card-subtitle>Date de création:{{a.dateDeCreation | date }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]=" " alt="Sublime Scenery">
+        <mat-card-content>
+          <p>Etudiant: {{a.etudiant}}</p>
+          <p>Professeur: {{a.professeur}}</p>
+          <p>Date de rendu: {{a.dateDeRendu |date }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <a routerLink="/assignment/{{ a._id }}">
+            <button mat-button>En savoir plus</button>
+          </a>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

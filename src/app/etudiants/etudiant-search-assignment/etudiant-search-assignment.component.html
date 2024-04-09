@@ -1,0 +1,186 @@
+<h2>Recherche avancée</h2>
+
+@if (searching) {
+<mat-card>
+  <mat-card-content>
+    <div class="search-container">
+      <mat-grid-list cols="2" rowHeight="5:1">
+        <mat-grid-tile>
+          <ul>
+            <li><b>Titre de l'assignment : </b>{{ titre }}</li>
+            <li><b>Nom de la matière : </b>{{ matiere }}</li>
+            <li><b>Statut de l'assignment : </b>{{ statuts[statut] }}</li>
+            <br>
+            <li>{{totalDocs}} résultat(s) trouvé(s)</li>
+          </ul>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <ul>
+            @if (dateDeCreationInf || dateDeCreationSup) {
+            <li>
+              Créé @if (dateDeCreationInf) { <b>après</b> le
+              {{ dateDeCreationInf | date : "dd/MM/yyyy" }} } 
+              @if (dateDeCreationInf && dateDeCreationSup) { et }
+              @if (dateDeCreationSup) { <b> avant</b> le {{ dateDeCreationSup | date : "dd/MM/yyyy" }} }
+            </li>
+            } @if (dateDeRenduInf || dateDeRenduSup) {
+            <li>
+              Rendu @if (dateDeRenduInf) { <b>après</b> le
+              {{ dateDeRenduInf | date : "dd/MM/yyyy" }} } 
+              @if (dateDeRenduInf && dateDeRenduSup) { et }
+              @if (dateDeRenduSup) { <b>avant</b> le {{ dateDeRenduSup | date : "dd/MM/yyyy" }} }
+            </li>
+            }
+          </ul>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-content>
+  @if (totalDocs == 0) {
+    <h2>No results found</h2>
+  } @else {
+    Resultats
+  }
+  </mat-card-content>
+</mat-card>
+
+} @else {
+<mat-card>
+  <mat-card-content>
+    <div class="search-container">
+      <form>
+        <!-- Titre de l'assignment contenant -->
+        <div class="search-form-fields">
+          <p class="p-label">Titre de l'assignment</p>
+          <mat-form-field>
+            <input
+              [(ngModel)]="titre"
+              name="titre"
+              matInput
+              placeholder="Titre"
+              required
+            />
+          </mat-form-field>
+        </div>
+
+        <!-- Choix de la matière -->
+        <div class="search-form-fields">
+          <p class="p-label">Nom de la matière</p>
+          <mat-form-field>
+            <mat-select [(ngModel)]="matiere" name="matiere">
+              <mat-option value="Toutes les matières"
+                >Toutes les matières</mat-option
+              >
+              @for (matiere of matieres; track matiere) {
+              <mat-option [value]="matiere.matiere.intitule">{{
+                matiere.matiere.intitule
+              }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <!-- Date de création entre | Vide -->
+        <div class="search-form-fields">
+          <p class="p-label">Date de création entre</p>
+          <mat-form-field>
+            <mat-label>Choix de la date</mat-label>
+            <input
+              [(ngModel)]="dateDeCreationInf"
+              name="dateDeCreationInf"
+              matInput
+              [matDatepicker]="creationInf"
+              readonly="true"
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="creationInf"
+            ></mat-datepicker-toggle>
+            <mat-datepicker touchUi #creationInf></mat-datepicker>
+          </mat-form-field>
+          <p class="p-and">et</p>
+          <mat-form-field>
+            <mat-label>Choix de la date</mat-label>
+            <input
+              [(ngModel)]="dateDeCreationSup"
+              name="dateDeCreationSup"
+              matInput
+              [matDatepicker]="creationSup"
+              readonly="true"
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="creationSup"
+            ></mat-datepicker-toggle>
+            <mat-datepicker touchUi #creationSup></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <!-- Assignment rendu | non-rendy | Tous -->
+        <div class="search-form-fields">
+          <p class="p-label">Statut de l'assignment</p>
+          <mat-radio-group
+            [(ngModel)]="statut"
+            name="statut"
+            aria-label="Statut assignment"
+          >
+            <mat-radio-button [value]="0">Tous</mat-radio-button>
+            <mat-radio-button [value]="1">Rendu</mat-radio-button>
+            <mat-radio-button [value]="-1">Non-rendu</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <!-- Date de rendu entre | Vide -->
+        @if (statut >= 0) {
+        <div class="search-form-fields">
+          <p class="p-label">Date de rendu entre</p>
+          <mat-form-field>
+            <mat-label>Choix de la date</mat-label>
+            <input
+              [(ngModel)]="dateDeRenduInf"
+              name="dateDeRenduInf"
+              matInput
+              [matDatepicker]="dateRenduInf"
+              readonly="true"
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="dateRenduInf"
+            ></mat-datepicker-toggle>
+            <mat-datepicker touchUi #dateRenduInf></mat-datepicker>
+          </mat-form-field>
+          <p class="p-and">et</p>
+          <mat-form-field>
+            <mat-label>Choix de la date</mat-label>
+            <input
+              [(ngModel)]="dateDeRenduSup"
+              name="dateDeRenduSup"
+              matInput
+              [matDatepicker]="dateRenduSup"
+              readonly="true"
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="dateRenduSup"
+            ></mat-datepicker-toggle>
+            <mat-datepicker touchUi #dateRenduSup></mat-datepicker>
+          </mat-form-field>
+        </div>
+        }
+      </form>
+
+      <div class="search-form-fields">
+        <p class="p-label"></p>
+        <button (click)="search()" mat-flat-button color="primary">
+          <mat-icon>search</mat-icon>
+          Rechercher
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+}

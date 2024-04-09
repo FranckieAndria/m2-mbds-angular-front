@@ -1,0 +1,108 @@
+<h2>Enregistrement d'un nouvel assignment</h2>
+
+<mat-grid-list cols="3" rowHeight="1:1">
+  <mat-grid-tile colspan="2">
+    <mat-stepper [linear]="true" orientation="vertical" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Titre de votre assignment</ng-template>
+          <mat-form-field>
+            <mat-label>Titre</mat-label>
+            <input
+              matInput
+              [(ngModel)]="titre"
+              formControlName="firstCtrl"
+              required
+            />
+          </mat-form-field>
+          <div>
+            <button mat-flat-button matStepperNext color="primary">Suivant</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Choisissez la matière</ng-template>
+          <mat-form-field>
+            <mat-label>Matière</mat-label>
+            <mat-select (selectionChange)="onSelectionChange($event)">
+              @for (matiere of matieres; track matiere) {
+              <mat-option [value]="matiere._id">{{
+                matiere.matiere.intitule
+              }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+          <div>
+            <button mat-raised-button matStepperPrevious>Précédent</button>
+            <button mat-flat-button matStepperNext color="primary" class="my-next">Suivant</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="thirdFormGroup">
+        <form [formGroup]="thirdFormGroup">
+          <ng-template matStepLabel>Choisissez une date de rendu</ng-template>
+          <mat-form-field class="example-full-width">
+            <mat-label>Choix de la date</mat-label>
+            <input
+              formControlName="thirdCtrl"
+              [min]="minDate"
+              [(ngModel)]="dateDeRendu"
+              matInput
+              [matDatepicker]="picker"
+              required
+              readonly="true"
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+          </mat-form-field>
+          <div>
+            <button mat-raised-button matStepperPrevious>Précédent</button>
+            <button mat-flat-button matStepperNext color="primary" class="my-next">Suivant</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Terminer</ng-template>
+        <p>Vous pouvez enregistrer votre assignment !</p>
+        <div>
+          <button mat-raised-button matStepperPrevious>Précédent</button>
+          <button mat-flat-button (click)="saveAssignment(); stepper.reset()" color="primary" class="my-next">Enregistrer</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <div class="description">
+      <div class="description-header">Résumé de votre assignment</div>
+      <div class="description-content">
+        @if (isOnCompletion()) {
+        @if (titre) { <p class="assignment-titre">{{ titre }}</p> }
+        @if (professeur.matiere != '') {
+        <li><b>Matiere : </b>{{ professeur.matiere }}</li>
+        <li>
+          <b>Professeur : </b>{{ professeur.prenom }} {{ professeur.nom }}
+        </li>
+        <img
+          src="{{ professeur.imagePath }}"
+          alt="Image professeur"
+          class="profile-image"
+        />
+        } @if (dateDeRendu) {
+        <li><b>Date de rendu : </b>{{ dateDeRendu | date:'dd/MM/yyyy' }}</li>
+        } } @else {
+        <div class="on-completion">
+          <img src="/assets/pen.png" alt="Compléter le formulaire" />
+        </div>
+        }
+      </div>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

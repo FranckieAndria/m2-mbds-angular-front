@@ -1,0 +1,56 @@
+<div class="container">
+  <div id="globalLoader" class="global-loader"><h1>CHARGEMENT ...</h1></div>
+
+  <mat-grid-list cols="3" rowHeight="3:1">
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile><h2>Relevé des notes</h2></mat-grid-tile>
+    <mat-grid-tile>
+      @if (isGetting) {
+      <button
+        mat-stroked-button
+        color="warn"
+        aria-label="Récupération du fichier PDF"
+      >
+        <mat-spinner></mat-spinner>
+      </button>
+      } @else {
+      <button
+        mat-flat-button
+        color="warn"
+        (click)="getReport()"
+        aria-label="Récupération du fichier PDF"
+      >
+        <mat-icon>picture_as_pdf</mat-icon>
+        Exporter PDF
+      </button>
+      }
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <ul class="responsive-table">
+    <li class="table-header">
+      <div class="col col-1">Titre</div>
+      <div class="col col-2">Matière</div>
+      <div class="col col-3">Professeur</div>
+      <div class="col col-3">Rendu le</div>
+      <div class="col col-4">Note</div>
+    </li>
+    @for (score of scores; track score) {
+    <li class="table-row">
+      <div class="col col-1">{{ score.titre }}</div>
+      <div class="col col-2">{{ score.professeur.matiere.intitule }}</div>
+      <div class="col col-3">
+        <img
+          src="{{ score.professeur.imagePath }}"
+          alt="Image professeur"
+          class="profile-image"
+        />
+      </div>
+      <div class="col col-4">{{ score.dateDeRendu | date: "dd-MM-yyyy" }}</div>
+      <div class="col col-4">
+        <b>{{ score.note }}/20</b>
+      </div>
+    </li>
+    }
+  </ul>
+</div>
