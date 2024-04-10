@@ -94,10 +94,10 @@ export class EtudiantSearchAssignmentComponent implements OnInit {
 
   search() {
     this.searching = true;
-    const dateDeCreationInf = this.datePipe.transform(this.dateDeCreationInf, "dd-MM-yyyy") || "" ;
-    const dateDeCreationSup = this.datePipe.transform(this.dateDeCreationSup, "dd-MM-yyyy") || "" ;
-    const dateDeRenduInf = this.datePipe.transform(this.dateDeRenduInf, "dd-MM-yyyy") || "" ;
-    const dateDeRenduSup = this.datePipe.transform(this.dateDeRenduSup, "dd-MM-yyyy") || "" ;
+    const dateDeCreationInf = this.datePipe.transform(this.dateDeCreationInf, "yyyy-MM-dd") || "" ;
+    const dateDeCreationSup = this.datePipe.transform(this.dateDeCreationSup, "yyyy-MM-dd") || "" ;
+    const dateDeRenduInf = this.datePipe.transform(this.dateDeRenduInf, "yyyy-MM-dd") || "" ;
+    const dateDeRenduSup = this.datePipe.transform(this.dateDeRenduSup, "yyyy-MM-dd") || "" ;
     this.etudiantService.search(this.titre, this.matiere, dateDeCreationInf, dateDeCreationSup, dateDeRenduInf, dateDeRenduSup, this.statut, (this.page + 1), this.limit).subscribe((data) => {
       this.assignments = data.docs;
       this.totalDocs = data.totalDocs;

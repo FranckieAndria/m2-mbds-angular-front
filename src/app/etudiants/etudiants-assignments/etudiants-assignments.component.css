@@ -51,6 +51,7 @@ mat-card-footer a{
   border-radius: 20px; /* Coins arrondis */
   font-size: 16px; /* Taille de police */
   transition: border-color 0.3s ease; /* Transition pour l'effet hover */
+  margin-bottom: 15px;
 }
 
 /* Effet de survol */

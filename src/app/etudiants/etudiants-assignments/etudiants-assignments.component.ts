@@ -50,7 +50,7 @@ export class EtudiantsAssignmentsComponent implements OnInit {
   /*************************
   * FIELDS in PAGE - START *
   *************************/
-  titre = 'Liste des assignments';
+  titre = 'Mes assignments';
   searchText:any;
   /***********************
   * FIELDS in PAGE - END *
