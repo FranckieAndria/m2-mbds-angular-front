@@ -27,6 +27,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { PageEvent, MatPaginatorModule } from '@angular/material/paginator';
 import { Assignment } from 'app/shared/models/assignment.model';
 import { RouterLink } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DetailsAssignmentsComponent } from 'app/shared/details-assignments/details-assignments.component';
 
 @Component({
   selector: 'app-etudiant-search-assignment',
@@ -89,9 +91,20 @@ export class EtudiantSearchAssignmentComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private etudiantService: EtudiantService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    public dialog: MatDialog
   ) {}
 
+  // Affichage des détails de l'Assignment
+  showDetails(_id: string) {
+    this.dialog.open(DetailsAssignmentsComponent, {
+      data: {
+        _id: _id
+      }
+    })
+  }
+
+  // Recherche depuis les infos du formulaire
   search() {
     this.searching = true;
     const dateDeCreationInf = this.datePipe.transform(this.dateDeCreationInf, "yyyy-MM-dd") || "" ;

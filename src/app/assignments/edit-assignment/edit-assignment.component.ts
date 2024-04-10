@@ -38,6 +38,7 @@ export class EditAssignmentComponent implements OnInit {
   ngOnInit() {
     // on récupère l'id dans l'url
     const id = +this.route.snapshot.params['id'];
+    /*
     this.assignmentsService.getAssignment(id)
     .subscribe((assignment) => {
       this.assignment = assignment;
@@ -47,12 +48,13 @@ export class EditAssignmentComponent implements OnInit {
         this.dateDeRendu = assignment.dateDeRendu;
       }
     });
+    */
   }
 
   onSaveAssignment() {
     if (!this.assignment) return;
     if (this.nomAssignment == '' || this.dateDeRendu === undefined) return;
-
+/*
     // on récupère les valeurs dans le formulaire
     this.assignment.titre = this.nomAssignment;
     this.assignment.dateDeRendu = this.dateDeRendu;
@@ -64,5 +66,6 @@ export class EditAssignmentComponent implements OnInit {
         // navigation vers la home page
         this.router.navigate(['/home']);
       });
+      */
   }
 }

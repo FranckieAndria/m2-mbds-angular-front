@@ -41,6 +41,7 @@ export class AssignmentDetailComponent implements OnInit {
   onAssignmentRendu() {
     // on a cliqué sur la checkbox, on change le statut de l'assignment
     if(this.assignmentTransmis) {
+      /*
       this.assignmentTransmis.rendu = true;
       this.assignmentsService.updateAssignment(this.assignmentTransmis)
       .subscribe(message => {
@@ -48,12 +49,14 @@ export class AssignmentDetailComponent implements OnInit {
         // on navigue vers la liste des assignments
         this.router.navigate(['/home']);
       });
+      */
     }
   }
 
   onDelete() {
     // on va directement utiliser le service
     if(this.assignmentTransmis) {
+      /*
       this.assignmentsService.deleteAssignment(this.assignmentTransmis)
       .subscribe(message => {
         console.log(message);
@@ -62,6 +65,7 @@ export class AssignmentDetailComponent implements OnInit {
         // on navigue vers la liste des assignments
         this.router.navigate(['/home']);
       });
+      */
     }
   }
 

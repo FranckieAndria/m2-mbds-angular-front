@@ -40,11 +40,10 @@
       <div class="col col-1">{{ score.titre }}</div>
       <div class="col col-2">{{ score.professeur.matiere.intitule }}</div>
       <div class="col col-3">
-        <img
-          src="{{ score.professeur.imagePath }}"
-          alt="Image professeur"
-          class="profile-image"
-        />
+        <span class="image-with-name">
+          <img src="{{ score.professeur.imagePath }}" class="profile-image" />
+          {{ score.professeur.prenom }} {{ score.professeur.nom }}
+        </span>
       </div>
       <div class="col col-4">{{ score.dateDeRendu | date: "dd-MM-yyyy" }}</div>
       <div class="col col-4">

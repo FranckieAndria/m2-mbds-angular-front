@@ -17,6 +17,13 @@ body { font-family: Roboto, "Helvetica Neue", sans-serif; margin: 0; }
   }
 }
 
+.image-with-name {
+  display: flex;
+  align-items: center;
+  margin-top: -2%;
+  margin-bottom: 3%;
+}
+
 .profile-image {
   width: 50px;
   height: auto;

@@ -65,10 +65,10 @@ export class EtudiantsAssignmentsComponent implements OnInit {
   }
 
   // Affichage des détails de l'Assignment
-  showDetails() {
+  showDetails(_id: string) {
     this.dialog.open(DetailsAssignmentsComponent, {
       data: {
-        titre: 'The Title MyFriend'
+        _id: _id
       }
     })
   }

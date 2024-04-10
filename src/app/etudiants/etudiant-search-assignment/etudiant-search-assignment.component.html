@@ -80,7 +80,7 @@
           <a
             mat-flat-button
             color="primary"
-            routerLink="/assignment/{{ a._id }}"
+            (click)="showDetails(a._id)"
             >Plus de détails</a
           >
         </mat-card-footer>

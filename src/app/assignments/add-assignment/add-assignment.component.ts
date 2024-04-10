@@ -39,13 +39,14 @@ export class AddAssignmentComponent {
     nouvelAssignment.titre= this.nomAssignment;
     nouvelAssignment.dateDeRendu = this.dateDeRendu;
     nouvelAssignment.rendu = false;
-
+/*
     this.assignmentsService
       .addAssignment(nouvelAssignment)
       .subscribe((reponse) => {
         console.log(reponse);
         this.router.navigate(['/home']);
       });
+      */
   }
 
 }
