@@ -1,0 +1,34 @@
+mat-card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mat-card-title {
+    color: #3F51B5;
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.my-card {
+    min-width: 70%;
+    min-height: 70%;
+}
+
+.my-statistic {
+    min-height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    font-size: 62px;
+    color: #3F51B5;
+}
+
+.rendu {
+    color: #4CAF50;
+}
+
+.non-rendu {
+    color: #F59D17;
+}
