@@ -19,6 +19,8 @@ import { PageEvent, MatPaginatorModule } from '@angular/material/paginator';
 import { EtudiantService } from '../etudiant.service';
 import { PreloaderService } from 'app/shared/preload.service';
 import { Assignment } from 'app/shared/models/assignment.model';
+import { MatDialog } from '@angular/material/dialog';
+import { DetailsAssignmentsComponent } from 'app/shared/details-assignments/details-assignments.component';
 // IMPORTATION material - END
 
 @Component({
@@ -56,10 +58,19 @@ export class EtudiantsAssignmentsComponent implements OnInit {
   * FIELDS in PAGE - END *
   ***********************/
 
-  constructor(private etudiantService: EtudiantService, private preloader: PreloaderService) { }
+  constructor(private etudiantService: EtudiantService, private preloader: PreloaderService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getAssignments();
+  }
+
+  // Affichage des détails de l'Assignment
+  showDetails() {
+    this.dialog.open(DetailsAssignmentsComponent, {
+      data: {
+        titre: 'The Title MyFriend'
+      }
+    })
   }
 
 
