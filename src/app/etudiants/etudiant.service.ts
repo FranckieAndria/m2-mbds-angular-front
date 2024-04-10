@@ -17,6 +17,11 @@ export class EtudiantService {
 
   constructor(private http: HttpClient) { }
 
+  // Récupération des infos de l'Home page
+  getHomeInfo(): Observable<any> {
+    return this.http.get<any>(environnement.baseUrl + environnement.baseEtudiant + "/home");
+  }
+
   // Recherche d'assignment
   search(titre: string, matiere: string, dateDeCreationInf: string, dateDeCreationSup: string, dateDeRenduInf: string, dateDeRenduSup: string, rendu: number, page: number, limit: number): Observable<any> {
     const url = environnement.baseUrl + environnement.baseEtudiant + "/assignments/search" + this.createSearchQueryParameter(titre, matiere, dateDeCreationInf, dateDeCreationSup, dateDeRenduInf, dateDeRenduSup, rendu, page, limit) ;
