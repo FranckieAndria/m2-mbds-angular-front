@@ -8,12 +8,18 @@
 
   <h1>{{ titre }}</h1>
 
-  <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)" [length]="totalPages"
-    [pageSize]="limit" [showFirstLastButtons]="true" [pageSizeOptions]="[5, 10, 15, 25]" [pageIndex]="page"
+  <mat-paginator #paginator class="demo-paginator" 
+    [length]="totalDocs"
+    [pageSize]="limit"
+    [showFirstLastButtons]="true"
+    [pageSizeOptions]="[5, 10, 25]" 
+    [pageIndex]="page"
+    (page)="handlePageEvent($event)" 
     aria-label="Select page">
   </mat-paginator>
 
   <mat-divider></mat-divider>
+
   &nbsp;&nbsp;&nbsp;
   <div class="div-card" >
     <div *ngFor="let a of assignments | filter:searchText">
@@ -23,9 +29,11 @@
           <mat-card-subtitle>Date de création : {{a.dateDeCreation | date: 'dd-MM-yyyy' }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <p><b>Professeur : </b>{{ a.professeur[0].prenom }} {{ a.professeur[0].nom }}<br>
-          <b>Date de rendu : </b>{{ a.dateDeRendu | date: 'dd-MM-yyyy' }}<br>
-          <b>Note : </b>{{ a.note }}/20</p>
+          <p>
+            <b>Professeur : </b>{{ a.professeur[0].prenom }} {{ a.professeur[0].nom }}<br>
+            <b>Date de rendu : </b>@if (a.dateDeRendu) { {{ a.dateDeRendu | date: 'dd-MM-yyyy' }} } @else { Pas encore rendu }<br>
+            <b>Note : </b>@if (a.note >= 0) { {{ a.note }}/20 } @else { Pas encore noté }
+          </p>
         </mat-card-content>
 
         <mat-card-footer>

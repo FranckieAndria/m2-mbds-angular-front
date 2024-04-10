@@ -35,8 +35,8 @@ export class EtudiantsAssignmentsComponent implements OnInit {
   /************************************
   * FIELDS pour la pagination - START *
   ************************************/
-  page = 1;
-  limit = 15;
+  page = 0;
+  limit = 10;
   totalDocs!: number;
   totalPages!: number;
   nextPage!: number;
@@ -65,7 +65,7 @@ export class EtudiantsAssignmentsComponent implements OnInit {
 
   // Liste des assignments de l'étudiant connecté
   getAssignments() {
-    this.etudiantService.getAssignmentsPagines(this.page, this.limit).subscribe((data) => {
+    this.etudiantService.getAssignmentsPagines((this.page + 1), this.limit).subscribe((data) => {
       this.assignments = data.docs;
       this.totalDocs = data.totalDocs;
       this.totalPages = data.totalPages;
@@ -101,7 +101,7 @@ export class EtudiantsAssignmentsComponent implements OnInit {
   }
 
   handlePageEvent(event: PageEvent) {
-    this.page = event.pageIndex + 1;
+    this.page = event.pageIndex;
     this.limit = event.pageSize;
     this.getAssignments();
   }
