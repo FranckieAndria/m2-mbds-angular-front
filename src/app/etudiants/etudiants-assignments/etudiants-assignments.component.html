@@ -9,31 +9,28 @@
   <h1>{{ titre }}</h1>
 
   <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)" [length]="totalPages"
-    [pageSize]="limit" [showFirstLastButtons]="true" [pageSizeOptions]="[5, 10, 25]" [pageIndex]="page"
+    [pageSize]="limit" [showFirstLastButtons]="true" [pageSizeOptions]="[5, 10, 15, 25]" [pageIndex]="page"
     aria-label="Select page">
   </mat-paginator>
 
-  <h2>Version avec Card</h2>
   <mat-divider></mat-divider>
   &nbsp;&nbsp;&nbsp;
   <div class="div-card" >
-    <div *ngFor="let a of assignments|filter:searchText">
+    <div *ngFor="let a of assignments | filter:searchText">
       <mat-card class="sublime-card">
         <mat-card-header>
-          <mat-card-title>{{a.titre}}</mat-card-title>
-          <mat-card-subtitle>Date de création:{{a.dateDeCreation | date }}</mat-card-subtitle>
+          <mat-card-title>{{ a.titre.length >= 23 ? a.titre.substring(0, 20) + " ..." : a.titre }}</mat-card-title>
+          <mat-card-subtitle>Date de création : {{a.dateDeCreation | date: 'dd-MM-yyyy' }}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image [src]=" " alt="Sublime Scenery">
         <mat-card-content>
-          <p>Etudiant: {{a.etudiant}}</p>
-          <p>Professeur: {{a.professeur}}</p>
-          <p>Date de rendu: {{a.dateDeRendu |date }}</p>
+          <p><b>Professeur : </b>{{ a.professeur[0].prenom }} {{ a.professeur[0].nom }}<br>
+          <b>Date de rendu : </b>{{ a.dateDeRendu | date: 'dd-MM-yyyy' }}<br>
+          <b>Note : </b>{{ a.note }}/20</p>
         </mat-card-content>
-        <mat-card-actions>
-          <a routerLink="/assignment/{{ a._id }}">
-            <button mat-button>En savoir plus</button>
-          </a>
-        </mat-card-actions>
+
+        <mat-card-footer>
+          <a mat-flat-button color="primary" routerLink="/assignment/{{ a._id }}">Plus de détails</a>
+        </mat-card-footer>
       </mat-card>
     </div>
   </div>

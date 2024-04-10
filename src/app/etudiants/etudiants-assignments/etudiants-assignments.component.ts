@@ -36,7 +36,7 @@ export class EtudiantsAssignmentsComponent implements OnInit {
   * FIELDS pour la pagination - START *
   ************************************/
   page = 1;
-  limit = 10;
+  limit = 15;
   totalDocs!: number;
   totalPages!: number;
   nextPage!: number;
