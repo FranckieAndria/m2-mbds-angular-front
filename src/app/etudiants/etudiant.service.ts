@@ -20,7 +20,6 @@ export class EtudiantService {
   // Recherche d'assignment
   search(titre: string, matiere: string, dateDeCreationInf: string, dateDeCreationSup: string, dateDeRenduInf: string, dateDeRenduSup: string, rendu: number): Observable<any> {
     const url = environnement.baseUrl + environnement.baseEtudiant + "/assignments/search" + this.createSearchQueryParameter(titre, matiere, dateDeCreationInf, dateDeCreationSup, dateDeRenduInf, dateDeRenduSup, rendu) ;
-console.log(url);
     return this.http.get(url);
   }
 

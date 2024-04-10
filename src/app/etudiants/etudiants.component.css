@@ -32,6 +32,10 @@ mat-sidenav {
 
 mat-sidenav-content{
     @media screen and (min-width: 600px) {
-        padding: 5rem 3% 4rem 3%;
+        padding: 5% 3% 10% 3%;
     }
+}
+
+.bottom {
+    height: 150px;
 }
