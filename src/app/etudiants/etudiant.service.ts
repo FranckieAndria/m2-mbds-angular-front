@@ -18,13 +18,13 @@ export class EtudiantService {
   constructor(private http: HttpClient) { }
 
   // Recherche d'assignment
-  search(titre: string, matiere: string, dateDeCreationInf: string, dateDeCreationSup: string, dateDeRenduInf: string, dateDeRenduSup: string, rendu: number): Observable<any> {
-    const url = environnement.baseUrl + environnement.baseEtudiant + "/assignments/search" + this.createSearchQueryParameter(titre, matiere, dateDeCreationInf, dateDeCreationSup, dateDeRenduInf, dateDeRenduSup, rendu) ;
+  search(titre: string, matiere: string, dateDeCreationInf: string, dateDeCreationSup: string, dateDeRenduInf: string, dateDeRenduSup: string, rendu: number, page: number, limit: number): Observable<any> {
+    const url = environnement.baseUrl + environnement.baseEtudiant + "/assignments/search" + this.createSearchQueryParameter(titre, matiere, dateDeCreationInf, dateDeCreationSup, dateDeRenduInf, dateDeRenduSup, rendu, page, limit) ;
     return this.http.get(url);
   }
 
-  createSearchQueryParameter(titre: string, matiere: string, dateDeCreationInf: string, dateDeCreationSup: string, dateDeRenduInf: string, dateDeRenduSup: string, rendu: number): string {
-    let parameters = "?titre=" + encodeURI(titre) + "&matiere=" + encodeURI(matiere) ;
+  createSearchQueryParameter(titre: string, matiere: string, dateDeCreationInf: string, dateDeCreationSup: string, dateDeRenduInf: string, dateDeRenduSup: string, rendu: number, page:number, limit: number): string {
+    let parameters = "?titre=" + encodeURI(titre) + "&matiere=" + encodeURI(matiere) + "&page=" + page + "&limit=" + limit ;
     if (dateDeCreationInf && dateDeCreationInf != "") parameters += "&dateDeCreationInf=" + dateDeCreationInf;
     if (dateDeCreationSup && dateDeCreationSup != "") parameters += "&dateDeCreationSup=" + dateDeCreationSup;
     if (dateDeRenduInf && dateDeRenduInf != "") parameters += "&dateDeRenduInf=" + dateDeRenduInf;

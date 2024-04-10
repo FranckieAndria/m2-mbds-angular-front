@@ -10,8 +10,8 @@
             <li><b>Titre de l'assignment : </b>{{ titre }}</li>
             <li><b>Nom de la matière : </b>{{ matiere }}</li>
             <li><b>Statut de l'assignment : </b>{{ statuts[statut] }}</li>
-            <br>
-            <li>{{totalDocs}} résultat(s) trouvé(s)</li>
+            <br />
+            <li>{{ totalDocs }} résultat(s) trouvé(s)</li>
           </ul>
         </mat-grid-tile>
         <mat-grid-tile>
@@ -19,16 +19,17 @@
             @if (dateDeCreationInf || dateDeCreationSup) {
             <li>
               Créé @if (dateDeCreationInf) { <b>après</b> le
-              {{ dateDeCreationInf | date : "dd/MM/yyyy" }} } 
-              @if (dateDeCreationInf && dateDeCreationSup) { et }
-              @if (dateDeCreationSup) { <b> avant</b> le {{ dateDeCreationSup | date : "dd/MM/yyyy" }} }
+              {{ dateDeCreationInf | date : "dd/MM/yyyy" }} } @if
+              (dateDeCreationInf && dateDeCreationSup) { et } @if
+              (dateDeCreationSup) { <b> avant</b> le
+              {{ dateDeCreationSup | date : "dd/MM/yyyy" }} }
             </li>
             } @if (dateDeRenduInf || dateDeRenduSup) {
             <li>
               Rendu @if (dateDeRenduInf) { <b>après</b> le
-              {{ dateDeRenduInf | date : "dd/MM/yyyy" }} } 
-              @if (dateDeRenduInf && dateDeRenduSup) { et }
-              @if (dateDeRenduSup) { <b>avant</b> le {{ dateDeRenduSup | date : "dd/MM/yyyy" }} }
+              {{ dateDeRenduInf | date : "dd/MM/yyyy" }} } @if (dateDeRenduInf
+              && dateDeRenduSup) { et } @if (dateDeRenduSup) { <b>avant</b> le
+              {{ dateDeRenduSup | date : "dd/MM/yyyy" }} }
             </li>
             }
           </ul>
@@ -38,15 +39,55 @@
   </mat-card-content>
 </mat-card>
 
-<mat-card>
-  <mat-card-content>
-  @if (totalDocs == 0) {
-    <h2>No results found</h2>
-  } @else {
-    Resultats
-  }
-  </mat-card-content>
-</mat-card>
+<div class="container">
+  <mat-paginator
+    #paginator
+    class="demo-paginator"
+    [length]="totalDocs"
+    [pageSize]="limit"
+    [showFirstLastButtons]="true"
+    [pageSizeOptions]="[5, 10, 25]"
+    [pageIndex]="page"
+    (page)="handlePageEvent($event)"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+
+  <div class="div-card">
+    <div *ngFor="let a of assignments">
+      <mat-card class="sublime-card">
+        <mat-card-header>
+          <mat-card-title>{{
+            a.titre.length >= 23 ? a.titre.substring(0, 20) + " ..." : a.titre
+          }}</mat-card-title>
+          <mat-card-subtitle
+            >Date de création :
+            {{ a.dateDeCreation | date : "dd-MM-yyyy" }}</mat-card-subtitle
+          >
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            <b>Professeur : </b><br />
+            <b>Date de rendu : </b>@if (a.dateDeRendu) {
+            {{ a.dateDeRendu | date : "dd-MM-yyyy" }} } @else { Pas encore rendu
+            }<br />
+            <b>Note : </b>@if (a.note >= 0) { {{ a.note }}/20 } @else { Pas
+            encore noté }
+          </p>
+        </mat-card-content>
+
+        <mat-card-footer>
+          <a
+            mat-flat-button
+            color="primary"
+            routerLink="/assignment/{{ a._id }}"
+            >Plus de détails</a
+          >
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+</div>
 
 } @else {
 <mat-card>

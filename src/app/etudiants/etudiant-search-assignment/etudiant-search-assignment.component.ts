@@ -24,6 +24,9 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { PageEvent, MatPaginatorModule } from '@angular/material/paginator';
+import { Assignment } from 'app/shared/models/assignment.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-etudiant-search-assignment',
@@ -46,6 +49,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatIconModule,
     MatGridListModule,
     CommonModule,
+    MatPaginatorModule,
+    RouterLink,
   ],
   templateUrl: './etudiant-search-assignment.component.html',
   styleUrls: ['./etudiant-search-assignment.component.css'],
@@ -55,9 +60,10 @@ export class EtudiantSearchAssignmentComponent implements OnInit {
   matieres: Matiere[] = [];
 
   // La recherche est effectuée et pagination
+  assignments: Assignment[] = [];
   searching: boolean = false;
-  page = 1;
-  limit = 10;
+  page: number = 0;
+  limit: number = 10;
   totalDocs: number = 0;
   totalPages!: number;
   nextPage!: number;
@@ -92,8 +98,14 @@ export class EtudiantSearchAssignmentComponent implements OnInit {
     const dateDeCreationSup = this.datePipe.transform(this.dateDeCreationSup, "dd-MM-yyyy") || "" ;
     const dateDeRenduInf = this.datePipe.transform(this.dateDeRenduInf, "dd-MM-yyyy") || "" ;
     const dateDeRenduSup = this.datePipe.transform(this.dateDeRenduSup, "dd-MM-yyyy") || "" ;
-    this.etudiantService.search(this.titre, this.matiere, dateDeCreationInf, dateDeCreationSup, dateDeRenduInf, dateDeRenduSup, this.statut).subscribe((data) => {
-      console.log(data);
+    this.etudiantService.search(this.titre, this.matiere, dateDeCreationInf, dateDeCreationSup, dateDeRenduInf, dateDeRenduSup, this.statut, (this.page + 1), this.limit).subscribe((data) => {
+      this.assignments = data.docs;
+      this.totalDocs = data.totalDocs;
+      this.totalPages = data.totalPages;
+      this.nextPage = data.nextPage;
+      this.prevPage = data.prevPage;
+      this.hasNextPage = data.hasNextPage;
+      this.hasPrevPage = data.hasPrevPage;
     }) ;
   }
 
@@ -102,4 +114,36 @@ export class EtudiantSearchAssignmentComponent implements OnInit {
       this.matieres = data;
     });
   }
+
+  /*********************
+  * PAGINATION - START *
+  *********************/
+  pagePrecedente() {
+    this.page = this.prevPage;
+    this.search();
+  }
+  pageSuivante() {
+    this.page = this.nextPage;
+    this.search();
+  }
+
+  premierePage() {
+    this.page = 1;
+    this.search();
+  }
+
+  dernierePage() {
+    this.page = this.totalPages;
+    this.search();
+  }
+
+  handlePageEvent(event: PageEvent) {
+    this.page = event.pageIndex;
+    this.limit = event.pageSize;
+    this.search();
+  }
+  /*********************
+  * PAGINATION - START *
+  *********************/
+
 }
