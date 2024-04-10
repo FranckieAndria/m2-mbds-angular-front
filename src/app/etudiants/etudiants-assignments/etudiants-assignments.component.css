@@ -6,6 +6,21 @@ mat-card-footer a{
   width: 100%;
 }
 
+.my-mat-grid-tile {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 8px 3px 0px;
+  border: 2px solid rgb(0, 0, 0, 0.8);
+  border-radius: 10px;
+}
+
+.mgt-middle {
+  width: 75% !important;
+  padding-left: 8px;
+}
+
 .rendu {
   color: green;
 }

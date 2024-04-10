@@ -21,22 +21,46 @@ import { PreloaderService } from 'app/shared/preload.service';
 import { Assignment } from 'app/shared/models/assignment.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DetailsAssignmentsComponent } from 'app/shared/details-assignments/details-assignments.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatRadioModule } from '@angular/material/radio';
 // IMPORTATION material - END
 
 @Component({
   selector: 'app-etudiants-assignments',
   standalone: true,
-  imports: [FilterPipe, CommonModule, RouterLink, FormsModule, MatCardModule, MatListModule, MatButtonModule, MatSliderModule, MatTable, MatTableModule, MatPaginatorModule],
+  imports: [
+    FilterPipe,
+    CommonModule,
+    RouterLink,
+    FormsModule,
+    MatCardModule,
+    MatListModule,
+    MatButtonModule,
+    MatSliderModule,
+    MatTable,
+    MatTableModule,
+    MatPaginatorModule,
+    MatGridListModule,
+    MatRadioModule,
+  ],
   templateUrl: './etudiants-assignments.component.html',
-  styleUrls: ['./etudiants-assignments.component.css']
+  styleUrls: ['./etudiants-assignments.component.css'],
 })
 export class EtudiantsAssignmentsComponent implements OnInit {
-
   assignments: Assignment[] = [];
 
+  /***********************************************************
+  * FILTRE DE Récupération depuis la base de données - START *
+  ***********************************************************/
+  statut: number = 0;
+  tri: number = 1;
+  /*********************************************************
+  * FILTRE DE Récupération depuis la base de données - END *
+  *********************************************************/
+
   /************************************
-  * FIELDS pour la pagination - START *
-  ************************************/
+   * FIELDS pour la pagination - START *
+   ************************************/
   page = 0;
   limit = 10;
   totalDocs!: number;
@@ -46,19 +70,23 @@ export class EtudiantsAssignmentsComponent implements OnInit {
   hasNextPage!: boolean;
   hasPrevPage!: boolean;
   /**********************************
-  * FIELDS pour la pagination - END *
-  **********************************/
+   * FIELDS pour la pagination - END *
+   **********************************/
 
   /*************************
-  * FIELDS in PAGE - START *
-  *************************/
+   * FIELDS in PAGE - START *
+   *************************/
   titre = 'Mes assignments';
-  searchText:any;
+  searchText: any;
   /***********************
-  * FIELDS in PAGE - END *
-  ***********************/
+   * FIELDS in PAGE - END *
+   ***********************/
 
-  constructor(private etudiantService: EtudiantService, private preloader: PreloaderService, public dialog: MatDialog) { }
+  constructor(
+    private etudiantService: EtudiantService,
+    private preloader: PreloaderService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.getAssignments();
@@ -68,30 +96,38 @@ export class EtudiantsAssignmentsComponent implements OnInit {
   showDetails(_id: string) {
     this.dialog.open(DetailsAssignmentsComponent, {
       data: {
-        _id: _id
-      }
-    })
-  }
-
-
-  // Liste des assignments de l'étudiant connecté
-  getAssignments() {
-    this.etudiantService.getAssignmentsPagines((this.page + 1), this.limit).subscribe((data) => {
-      this.assignments = data.docs;
-      this.totalDocs = data.totalDocs;
-      this.totalPages = data.totalPages;
-      this.nextPage = data.nextPage;
-      this.prevPage = data.prevPage;
-      this.hasNextPage = data.hasNextPage;
-      this.hasPrevPage = data.hasPrevPage;
-
-      this.preloader.hide();
+        _id: _id,
+      },
     });
   }
 
+  // Change le statut des assignments à récupérer
+  changeStatut() {
+    this.page = 0;
+    this.limit = 10;
+    this.getAssignments();
+  }
+
+  // Liste des assignments de l'étudiant connecté
+  getAssignments() {
+    this.etudiantService
+      .getAssignmentsPagines(this.page + 1, this.limit, this.statut, this.tri)
+      .subscribe((data) => {
+        this.assignments = data.docs;
+        this.totalDocs = data.totalDocs;
+        this.totalPages = data.totalPages;
+        this.nextPage = data.nextPage;
+        this.prevPage = data.prevPage;
+        this.hasNextPage = data.hasNextPage;
+        this.hasPrevPage = data.hasPrevPage;
+
+        this.preloader.hide();
+      });
+  }
+
   /*********************
-  * PAGINATION - START *
-  *********************/
+   * PAGINATION - START *
+   *********************/
   pagePrecedente() {
     this.page = this.prevPage;
     this.getAssignments();
@@ -117,7 +153,6 @@ export class EtudiantsAssignmentsComponent implements OnInit {
     this.getAssignments();
   }
   /*********************
-  * PAGINATION - START *
-  *********************/
-
+   * PAGINATION - START *
+   *********************/
 }

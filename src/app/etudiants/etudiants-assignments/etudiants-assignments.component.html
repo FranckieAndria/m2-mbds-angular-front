@@ -1,43 +1,99 @@
 <div class="container">
-
   <div id="globalLoader" class="global-loader"><h1>CHARGEMENT ...</h1></div>
 
   <h2>{{ titre }}</h2>
 
-  <div>
-    <input class="search-input" type="search" placeholder="Rechercher..." [(ngModel)]="searchText" />
-  </div>
+  <mat-grid-list cols="3" rowHeight="7:1">
+    <mat-grid-tile>
+      <mat-radio-group
+        class="my-mat-grid-tile"
+        [(ngModel)]="statut"
+        name="statut"
+        aria-label="Statut assignment"
+        (change)="changeStatut()"
+      >
+        <mat-radio-button color="primary" [value]="0">Tous</mat-radio-button>
+        <mat-radio-button color="primary" [value]="1">Rendu</mat-radio-button>
+        <mat-radio-button color="primary" [value]="-1"
+          >Non-rendu</mat-radio-button
+        >
+      </mat-radio-group>
+    </mat-grid-tile>
 
-  <mat-paginator #paginator class="demo-paginator" 
+    <mat-grid-tile>
+      <mat-radio-group
+        class="my-mat-grid-tile mgt-middle"
+        [(ngModel)]="tri"
+        name="tri"
+        aria-label="Tri assignment"
+        (change)="changeStatut()"
+      >
+        <label>Trier par date</label>
+        <mat-radio-button color="primary" [value]="1"
+          >Ascendant</mat-radio-button
+        >
+        <mat-radio-button color="primary" [value]="-1"
+          >Descendant</mat-radio-button
+        >
+      </mat-radio-group>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div>
+        <input
+          class="search-input"
+          type="search"
+          placeholder="Rechercher..."
+          [(ngModel)]="searchText"
+        />
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-paginator
+    #paginator
+    class="demo-paginator"
     [length]="totalDocs"
     [pageSize]="limit"
     [showFirstLastButtons]="true"
-    [pageSizeOptions]="[5, 10, 25]" 
+    [pageSizeOptions]="[5, 10, 25]"
     [pageIndex]="page"
-    (page)="handlePageEvent($event)" 
-    aria-label="Select page">
+    (page)="handlePageEvent($event)"
+    aria-label="Select page"
+  >
   </mat-paginator>
 
   <mat-divider></mat-divider>
 
   &nbsp;&nbsp;&nbsp;
-  <div class="div-card" >
-    <div *ngFor="let a of assignments | filter:searchText">
+  <div class="div-card">
+    <div *ngFor="let a of assignments | filter : searchText">
       <mat-card class="sublime-card">
         <mat-card-header>
-          <mat-card-title>{{ a.titre.length >= 23 ? a.titre.substring(0, 20) + "..." : a.titre }}</mat-card-title>
-          <mat-card-subtitle>Date de création : {{a.dateDeCreation | date: 'dd-MM-yyyy' }}</mat-card-subtitle>
+          <mat-card-title>{{
+            a.titre.length >= 23 ? a.titre.substring(0, 20) + "..." : a.titre
+          }}</mat-card-title>
+          <mat-card-subtitle
+            >Date de création :
+            {{ a.dateDeCreation | date : "dd-MM-yyyy" }}</mat-card-subtitle
+          >
         </mat-card-header>
         <mat-card-content>
           <p>
-            <b>Professeur : </b>{{ a.professeur[0].prenom }} {{ a.professeur[0].nom }}<br>
-            <b>Date de rendu : </b>@if (a.dateDeRendu) { {{ a.dateDeRendu | date: 'dd-MM-yyyy' }} } @else { Pas encore rendu }<br>
-            <b>Note : </b>@if (a.note >= 0) { {{ a.note }}/20 } @else { Pas encore noté }
+            <b>Professeur : </b>{{ a.professeur[0].prenom }}
+            {{ a.professeur[0].nom }}<br />
+            <b>Date de rendu : </b>@if (a.dateDeRendu) {
+            {{ a.dateDeRendu | date : "dd-MM-yyyy" }} } @else { Pas encore rendu
+            }<br />
+            <b>Note : </b>@if (a.note >= 0) { {{ a.note }}/20 } @else { Pas
+            encore noté }
           </p>
         </mat-card-content>
 
         <mat-card-footer>
-          <a mat-flat-button color="primary" (click)="showDetails(a._id)">Plus de détails</a>
+          <a mat-flat-button color="primary" (click)="showDetails(a._id)"
+            >Plus de détails</a
+          >
         </mat-card-footer>
       </mat-card>
     </div>

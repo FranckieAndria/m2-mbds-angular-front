@@ -58,8 +58,8 @@ export class EtudiantService {
   }
 
   // Récupération des assignments paginés
-  getAssignmentsPagines(page: number, limit: number): Observable<any> {
-    return this.http.get<Assignment[]>(environnement.baseUrl + environnement.baseEtudiant + "/assignments?page=" + page + "&limit=" + limit);
+  getAssignmentsPagines(page: number, limit: number, statut: number, tri: number): Observable<any> {
+    return this.http.get<Assignment[]>(environnement.baseUrl + environnement.baseEtudiant + "/assignments?page=" + page + "&limit=" + limit + "&rendu=" + statut + "&tri=" + tri);
   }
 
   // Récupération de la liste des matières pour les listes déroulantes
