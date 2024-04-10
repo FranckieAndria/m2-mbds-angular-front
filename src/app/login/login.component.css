@@ -92,7 +92,15 @@ h1 {
 }
 
 .login {
-	width: 320px;
+	width: 100%;
 	padding: 30px;
 	padding-top: 156px;
+}
+
+.login-div-button {
+	width: 100%;
+}
+
+.dessous {
+	margin-top: 5%;
 }

@@ -19,13 +19,30 @@ import { environnement } from 'environnement/environnement';
 })
 export class LoginComponent {
 
+  // User trying to log
+  user_role: string = 'etudiants';
+  user_role_interface = 'ETUDIANT';
+
+  user_role_etudiant = 'ETUDIANT';
+  user_role_professeur = 'PROFESSEUR' ;
+
   credentials: Credentials = {email: '', password: ''};
   error_login: Boolean = false;
 
   constructor(private authService: AuthService, private route: Router) {}
 
+  changeUser() {
+    this.user_role = this.user_role == 'etudiants' ? 'professeurs' : 'etudiants' ;
+    this.user_role_interface = this.user_role_interface == this.user_role_etudiant ? this.user_role_professeur : this.user_role_etudiant ;
+  }
+
+  getOption() {
+    let result = this.user_role_interface == this.user_role_etudiant ? this.user_role_professeur : this.user_role_etudiant;
+    return result.toLowerCase();
+  }
+  
   login() {
-    this.authService.login(this.credentials, 'etudiants').subscribe(
+    this.authService.login(this.credentials, this.user_role).subscribe(
       data => {
         if (data.logged) {
           this.error_login = false;

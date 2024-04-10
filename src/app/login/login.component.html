@@ -4,7 +4,7 @@
 	<div class="screen">
 		<div class="screen__content">
             <div class="login">
-                <h1>Se connecter</h1>
+                <h1>Se connecter | {{ user_role_interface }}</h1>
                 <mat-form-field appearance="outline">
                     <mat-icon matSuffix>mail_outline</mat-icon>
                     <mat-label>Adresse éléctronique</mat-label>
@@ -15,7 +15,14 @@
                     <input matInput [(ngModel)]="credentials.password">
                     <mat-icon matSuffix>remove_red_eye</mat-icon>
                 </mat-form-field>
-                <button mat-raised-button color="primary" (click)="login()">Se connecter</button>
+                <div class="login-div-button">
+                    <button mat-raised-button color="primary" (click)="login()">Se connecter</button>
+                </div>
+                <div class="login-div-button dessous">
+                    <button mat-raised-button (click)="changeUser()">
+                        <mat-icon>person_outline</mat-icon> Je suis {{ getOption() }}
+                    </button>
+                </div>
             </div>
         @if (error_login) {
             <div class="error__message">
