@@ -1,0 +1,48 @@
+/* Assuming you have a global CSS file or component-specific styles */
+.grid-container {
+    display: flex;
+    justify-content: space-between;
+    /* Add any other container-level styles you need */
+  }
+  
+  .example-list {
+    /* Customize the appearance of the grid list */
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    padding: 10px;
+  }
+  
+  .mat-grid-tile {
+    /* Style individual grid tiles */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    cursor: grab;
+    transition: background-color 0.3s ease;
+  }
+  
+  .mat-grid-tile.cdk-drag-preview {
+    /* Style the dragged tile preview */
+    opacity: 0.8;
+    background-color: #e0e0e0;
+  }
+  
+  .mat-grid-tile.cdk-drag-placeholder {
+    /* Style the placeholder when dragging */
+    background-color: #f0f0f0;
+  }
+  
+  .mat-grid-tile.cdk-drag-animating {
+    /* Style the tile during animation */
+    transition: transform 0.3s ease;
+  }
+  
+  .mat-grid-tile.cdk-drag-animating.cdk-drag-released {
+    /* Style the tile after animation completes */
+    background-color: #d0d0d0;
+  }
+  

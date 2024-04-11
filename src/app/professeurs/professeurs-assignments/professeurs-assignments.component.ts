@@ -20,12 +20,16 @@ import { PageEvent, MatPaginatorModule } from '@angular/material/paginator';
 
 import { filter, map, pairwise, tap, throttleTime } from 'rxjs/operators';
 
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+
 @Component({
   selector: 'app-professeurs-assignments',
   standalone: true,
   templateUrl: './professeurs-assignments.component.html',
   styleUrls: ['./professeurs-assignments.component.css'],
   imports :[
+    DragDropModule,
     ScrollingModule,
     CommonModule,
     RouterLink,
@@ -42,6 +46,7 @@ import { filter, map, pairwise, tap, throttleTime } from 'rxjs/operators';
 })
 export class ProfesseursAssignmentsComponent implements OnInit {
 
+
   // Pour la pagination
   page = 1;
   limit = 10;
@@ -53,6 +58,12 @@ export class ProfesseursAssignmentsComponent implements OnInit {
   hasPrevPage!: boolean;
   assignments: Assignment[] = [];
 
+  //Exemple drag data
+  books = ['Book 1', 'Book 2', 'Book 3', 'Book 4'];
+
+  // Define an empty array for the target data
+  targetBooks: string[] = [];
+
   // pour virtual scroll infini
   @ViewChild('scroller') scroller!: CdkVirtualScrollViewport;
 
@@ -62,6 +73,14 @@ export class ProfesseursAssignmentsComponent implements OnInit {
   ngOnInit() {
     console.log('ngOnInit assignments, appelée AVANT affichage du composant');
     this.getAssignmentsFromService();
+  }
+
+  // Handle the drop event
+  drop(event: any) {
+    const book = event.item.data;
+    console.log('Transfert');
+    this.targetBooks.push(book);
+    console.log('Livres: '+this.targetBooks);
   }
 
   ngAfterViewInit() {
@@ -140,5 +159,12 @@ export class ProfesseursAssignmentsComponent implements OnInit {
        });
      console.log('Requête envoyée');
    }
+
+   //Drag and drop
+   //Exemple
+   // Define your source data (e.g., books)
+  
+
+
 
 }
