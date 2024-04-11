@@ -1,3 +1,17 @@
 <p>
   professeurs-assignments works!
 </p>
+<p>Version avec scrolling infini</p>
+  <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport" #scroller>
+    <mat-list *cdkVirtualFor="let a of assignments" class="example-item">
+      <a routerLink="/assignments/{{ a._id }}">
+        <h3 mat-subheader>
+          Date limite: {{ a.dateDeRendu | date : "dd/MM/yy" }}
+        </h3>
+        <mat-list-item>
+          <p>{{ a.nom }} id = {{ a._id }}, rendu : {{ a.rendu }}</p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </a>
+    </mat-list>
+  </cdk-virtual-scroll-viewport>

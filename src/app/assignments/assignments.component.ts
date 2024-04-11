@@ -49,6 +49,7 @@ import { Assignment } from 'app/shared/models/assignment.model';
 export class AssignmentsComponent implements OnInit {
   titre = 'Liste des assignments';
 
+  
   page = 1;
   limit = 10;
   totalDocs!: number;
