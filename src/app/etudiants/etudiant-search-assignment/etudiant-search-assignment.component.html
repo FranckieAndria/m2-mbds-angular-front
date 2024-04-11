@@ -67,7 +67,7 @@
         </mat-card-header>
         <mat-card-content>
           <p>
-            <b>Professeur : </b><br />
+            <b>Professeur : </b>{{ a.professeur[0].prenom }} {{ a.professeur[0].nom }}<br />
             <b>Date de rendu : </b>@if (a.dateDeRendu) {
             {{ a.dateDeRendu | date : "dd-MM-yyyy" }} } @else { Pas encore rendu
             }<br />

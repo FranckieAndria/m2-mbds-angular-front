@@ -25,7 +25,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { PageEvent, MatPaginatorModule } from '@angular/material/paginator';
-import { Assignment } from 'app/shared/models/assignment.model';
 import { RouterLink } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DetailsAssignmentsComponent } from 'app/shared/details-assignments/details-assignments.component';
@@ -62,7 +61,7 @@ export class EtudiantSearchAssignmentComponent implements OnInit {
   matieres: Matiere[] = [];
 
   // La recherche est effectuée et pagination
-  assignments: Assignment[] = [];
+  assignments: any = [];
   searching: boolean = false;
   page: number = 0;
   limit: number = 10;
