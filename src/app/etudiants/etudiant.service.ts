@@ -17,6 +17,11 @@ export class EtudiantService {
 
   constructor(private http: HttpClient) { }
 
+  // Récupération des infos de l'Home page - Stats
+  getHomeInfoStats(): Observable<any> {
+    return this.http.get<any>(environnement.baseUrl + environnement.baseEtudiant + "/homestats");
+  }
+
   // Récupération des infos de l'Home page
   getHomeInfo(): Observable<any> {
     return this.http.get<any>(environnement.baseUrl + environnement.baseEtudiant + "/home");

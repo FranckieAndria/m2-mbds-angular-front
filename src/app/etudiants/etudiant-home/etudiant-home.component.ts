@@ -16,9 +16,13 @@ import { PreloaderService } from 'app/shared/preload.service';
 })
 export class EtudiantHomeComponent implements OnInit {
 
+  // Nombre d'assignment de l'Etudiant
   total: number = 0;
   rendu: number = 0;
   non_rendu: number = 0;
+
+  // Nombre d'assignment de l'Etudiant groupé par matière
+  stats: any;
 
   constructor(private etudiantService: EtudiantService, private preloader: PreloaderService) { }
 
@@ -28,7 +32,11 @@ export class EtudiantHomeComponent implements OnInit {
       this.rendu = data.rendu;
       this.non_rendu = data.non_rendu;
       this.preloader.hide();
-    })
+    });
+
+    this.etudiantService.getHomeInfoStats().subscribe((data) => {
+      console.log(data);
+    });
   }
 
 }
