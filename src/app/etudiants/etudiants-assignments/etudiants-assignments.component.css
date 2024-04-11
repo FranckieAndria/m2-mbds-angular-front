@@ -6,19 +6,24 @@ mat-card-footer a{
   width: 100%;
 }
 
+mat-card {
+  width: 100% !important;
+  padding-right: 3%;
+}
+
 .my-mat-grid-tile {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3px 8px 3px 0px;
-  border: 2px solid rgb(0, 0, 0, 0.8);
+  padding: 3px 0px 3px 0px;
   border-radius: 10px;
 }
 
 .mgt-middle {
-  width: 75% !important;
-  padding-left: 8px;
+  width: 95% !important;
+  margin-left: 5%;
+  padding-left: 3%;
 }
 
 .rendu {

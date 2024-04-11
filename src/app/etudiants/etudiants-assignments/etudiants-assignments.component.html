@@ -5,37 +5,41 @@
 
   <mat-grid-list cols="3" rowHeight="7:1">
     <mat-grid-tile>
-      <mat-radio-group
-        class="my-mat-grid-tile"
-        [(ngModel)]="statut"
-        name="statut"
-        aria-label="Statut assignment"
-        (change)="changeStatut()"
-      >
-        <mat-radio-button color="primary" [value]="0">Tous</mat-radio-button>
-        <mat-radio-button color="primary" [value]="1">Rendu</mat-radio-button>
-        <mat-radio-button color="primary" [value]="-1"
-          >Non-rendu</mat-radio-button
+      <mat-card>
+        <mat-radio-group
+          class="my-mat-grid-tile"
+          [(ngModel)]="statut"
+          name="statut"
+          aria-label="Statut assignment"
+          (change)="changeStatut()"
         >
-      </mat-radio-group>
+          <mat-radio-button color="primary" [value]="0">Tous</mat-radio-button>
+          <mat-radio-button color="primary" [value]="1">Rendu</mat-radio-button>
+          <mat-radio-button color="primary" [value]="-1"
+            >Non-rendu</mat-radio-button
+          >
+        </mat-radio-group>
+      </mat-card>
     </mat-grid-tile>
 
     <mat-grid-tile>
-      <mat-radio-group
-        class="my-mat-grid-tile mgt-middle"
-        [(ngModel)]="tri"
-        name="tri"
-        aria-label="Tri assignment"
-        (change)="changeStatut()"
-      >
-        <label>Trier par date</label>
-        <mat-radio-button color="primary" [value]="1"
-          >Ascendant</mat-radio-button
+      <mat-card class="mgt-middle">
+        <mat-radio-group
+          class="my-mat-grid-tile"
+          [(ngModel)]="tri"
+          name="tri"
+          aria-label="Tri assignment"
+          (change)="changeStatut()"
         >
-        <mat-radio-button color="primary" [value]="-1"
-          >Descendant</mat-radio-button
-        >
-      </mat-radio-group>
+          <label>Trier par date</label>
+          <mat-radio-button color="primary" [value]="1"
+            >Ascendant</mat-radio-button
+          >
+          <mat-radio-button color="primary" [value]="-1"
+            >Descendant</mat-radio-button
+          >
+        </mat-radio-group>
+      </mat-card>
     </mat-grid-tile>
 
     <mat-grid-tile>
