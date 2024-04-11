@@ -1,3 +1,35 @@
-<p>
-  etudiant-home works!
-</p>
+<div id="globalLoader" class="global-loader"><h1>CHARGEMENT ...</h1></div>
+
+<mat-grid-list cols="3" rowHeight="2:1">
+  <mat-grid-tile>
+    <mat-card class="my-card">
+      <mat-card-header>
+        <span class="mat-card-title">Nbre Total d'assignments</span>
+      </mat-card-header>
+
+      <mat-card-content class="my-statistic"> {{ total }} </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-card class="my-card">
+      <mat-card-header>
+        <span class="mat-card-title rendu">Nbre d'assignments Rendus</span>
+      </mat-card-header>
+
+      <mat-card-content class="my-statistic rendu"> {{ rendu }} </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-card class="my-card">
+      <mat-card-header>
+        <span class="mat-card-title non-rendu"
+          >Nbre d'assignments Non-rendus</span
+        >
+      </mat-card-header>
+
+      <mat-card-content class="my-statistic non-rendu"> {{ non_rendu }} </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

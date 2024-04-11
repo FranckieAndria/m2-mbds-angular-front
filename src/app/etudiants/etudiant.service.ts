@@ -17,6 +17,16 @@ export class EtudiantService {
 
   constructor(private http: HttpClient) { }
 
+  // Récupération des infos de l'Home page - Stats
+  getHomeInfoStats(): Observable<any> {
+    return this.http.get<any>(environnement.baseUrl + environnement.baseEtudiant + "/homestats");
+  }
+
+  // Récupération des infos de l'Home page
+  getHomeInfo(): Observable<any> {
+    return this.http.get<any>(environnement.baseUrl + environnement.baseEtudiant + "/home");
+  }
+
   // Recherche d'assignment
   search(titre: string, matiere: string, dateDeCreationInf: string, dateDeCreationSup: string, dateDeRenduInf: string, dateDeRenduSup: string, rendu: number, page: number, limit: number): Observable<any> {
     const url = environnement.baseUrl + environnement.baseEtudiant + "/assignments/search" + this.createSearchQueryParameter(titre, matiere, dateDeCreationInf, dateDeCreationSup, dateDeRenduInf, dateDeRenduSup, rendu, page, limit) ;
@@ -58,8 +68,8 @@ export class EtudiantService {
   }
 
   // Récupération des assignments paginés
-  getAssignmentsPagines(page: number, limit: number): Observable<any> {
-    return this.http.get<Assignment[]>(environnement.baseUrl + environnement.baseEtudiant + "/assignments?page=" + page + "&limit=" + limit);
+  getAssignmentsPagines(page: number, limit: number, statut: number, tri: number): Observable<any> {
+    return this.http.get<Assignment[]>(environnement.baseUrl + environnement.baseEtudiant + "/assignments?page=" + page + "&limit=" + limit + "&rendu=" + statut + "&tri=" + tri);
   }
 
   // Récupération de la liste des matières pour les listes déroulantes
