@@ -18,11 +18,21 @@
         <mat-card-header>
           <mat-card-title>
             <span class="image-with-name">
-              <img src="{{ e.etudiantDetails[0].imagePath }}" class="profile-image" />
-              {{ e.etudiantDetails[0].prenom }} {{ e.etudiantDetails[0].nom }}
+              <img src="{{ e.etudiantDetails[0].imagePath }}" class="profile-image img-etudiant" />
             </span>
+
+            <p>{{ e.etudiantDetails[0].prenom }} {{ e.etudiantDetails[0].nom }}</p>
+
           </mat-card-title>
         </mat-card-header>
+
+        <mat-card-content>
+          <p>Nbre d'assignments : <b>{{ e.total | number: '2.' }}</b></p>
+        </mat-card-content>
+
+        <mat-card-footer>
+          <a mat-flat-button color="primary">Plus de détails</a>
+        </mat-card-footer>
       </mat-card>
     </div>
   </div>

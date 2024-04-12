@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
@@ -17,7 +18,8 @@ import { ProfesseurService } from '../professeurs.service';
     FilterPipe,
     MatCardModule,
     MatListModule,
-    MatSliderModule
+    MatSliderModule,
+    MatButtonModule
   ],
   templateUrl: './professeurs-etudiants.component.html',
   styleUrls: ['./professeurs-etudiants.component.css']
