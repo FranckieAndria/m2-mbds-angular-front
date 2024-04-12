@@ -22,6 +22,21 @@ export class EtudiantService {
     return this.http.get<any>(environnement.baseUrl + environnement.baseEtudiant + "/homestats");
   }
 
+  getArrayInfoStats(docs: any): any {
+    let result: any = [];
+    for (let index = 0; index < docs.length; index++) {
+      const line = docs[index];
+      result.push({
+        total: line.total,
+        nom: line.professeurDetails[0].nom,
+        prenom: line.professeurDetails[0].prenom,
+        imagePath: line.professeurDetails[0].imagePath,
+        matiere: line.professeurDetails[0].matiere.intitule
+      }) ;
+    }
+    return result ;
+  }
+
   // Récupération des infos de l'Home page
   getHomeInfo(): Observable<any> {
     return this.http.get<any>(environnement.baseUrl + environnement.baseEtudiant + "/home");

@@ -1,34 +1,42 @@
 mat-card-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
 }
 
 .mat-card-title {
-    color: #3F51B5;
-    font-size: 26px;
-    font-weight: 500;
+  color: #3F51B5;
+  font-size: 26px;
+  font-weight: 500;
 }
 
 .my-card {
-    min-width: 70%;
-    min-height: 70%;
+  min-width: 70%;
+  min-height: 70%;
 }
 
 .my-statistic {
-    min-height: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 800;
-    font-size: 62px;
-    color: #3F51B5;
+  min-height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+  font-size: 62px;
+  color: #3F51B5;
 }
 
 .rendu {
-    color: #4CAF50;
+  color: #4CAF50;
 }
 
 .non-rendu {
-    color: #F59D17;
+  color: #F59D17;
 }
