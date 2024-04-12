@@ -27,11 +27,11 @@ export class EtudiantHomeComponent implements OnInit, AfterViewInit {
   non_rendu: number = 0;
 
   // Table triée
-  displayedColumns: string[] = ['Matiere', 'Professeur', 'Total'];
+  displayedColumns: string[] = ['matiere', 'professeur', 'total'];
   dataSource: any;
   @ViewChild(MatSort) sort!: MatSort;
  
-  constructor(private etudiantService: EtudiantService, private preloader: PreloaderService, private _liveAnnouncer: LiveAnnouncer) { }
+  constructor(private etudiantService: EtudiantService, private preloader: PreloaderService, private _liveAnnouncer: LiveAnnouncer) {}
  
   ngAfterViewInit(): void {
     this.etudiantService.getHomeInfoStats().subscribe((data) => {
