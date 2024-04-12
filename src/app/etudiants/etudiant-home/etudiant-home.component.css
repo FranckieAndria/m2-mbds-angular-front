@@ -4,6 +4,16 @@ mat-card-header {
   align-items: center;
 }
 
+.my-line {
+  display: flex !important;
+  align-items: center !important;
+  padding-top: 3%;
+}
+
+.my-margin {
+  margin-top: 0px !important;
+}
+
 table {
   width: 100%;
 }
