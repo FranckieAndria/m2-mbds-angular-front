@@ -8,7 +8,20 @@ mat-card-footer a {
 
 mat-card {
   width: 100% !important;
-  padding-right: 3%;
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+mat-card-content {
+  text-align: center;
+}
+
+.nom-etudiant {
+  margin-top: -5%;
 }
 
 .img-etudiant {
@@ -100,6 +113,7 @@ mat-card {
 }
 
 .div-card {
+  padding-right: 0px !important;
   display: grid;
   grid-template-columns: repeat(5,
       minmax(250px, 1fr));

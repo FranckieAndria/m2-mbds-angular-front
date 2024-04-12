@@ -17,11 +17,11 @@
       <mat-card class="sublime-card">
         <mat-card-header>
           <mat-card-title>
-            <span class="image-with-name">
+            <div class="image-with-name">
               <img src="{{ e.etudiantDetails[0].imagePath }}" class="profile-image img-etudiant" />
-            </span>
+            </div>
 
-            <p>{{ e.etudiantDetails[0].prenom }} {{ e.etudiantDetails[0].nom }}</p>
+            <p class="nom-etudiant">{{ e.etudiantDetails[0].prenom }} {{ e.etudiantDetails[0].nom }}</p>
 
           </mat-card-title>
         </mat-card-header>
