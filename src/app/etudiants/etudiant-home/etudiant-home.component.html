@@ -36,7 +36,7 @@
 
 <h2>Vos assignments par matière</h2>
 
-<table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" matSortActive="total" matSortDirection="desc" matSortDisableClear class="mat-elevation-z8">
 
   <ng-container matColumnDef="professeur">
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by professeur">
