@@ -32,6 +32,7 @@ export class LoginComponent {
   constructor(private authService: AuthService, private route: Router) {}
 
   changeUser() {
+    this.error_login = false;
     this.user_role = this.user_role == 'etudiants' ? 'professeurs' : 'etudiants' ;
     this.user_role_interface = this.user_role_interface == this.user_role_etudiant ? this.user_role_professeur : this.user_role_etudiant ;
   }
