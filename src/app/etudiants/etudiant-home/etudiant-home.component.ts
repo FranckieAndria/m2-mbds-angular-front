@@ -27,7 +27,7 @@ export class EtudiantHomeComponent implements OnInit, AfterViewInit {
   non_rendu: number = 0;
 
   // Table triée
-  displayedColumns: string[] = ['matiere', 'professeur', 'total'];
+  displayedColumns: string[] = ['Matiere', 'Professeur', 'Total'];
   dataSource: any;
   @ViewChild(MatSort) sort!: MatSort;
  

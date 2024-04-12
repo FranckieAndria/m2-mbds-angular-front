@@ -27,11 +27,10 @@ export class EtudiantService {
     for (let index = 0; index < docs.length; index++) {
       const line = docs[index];
       result.push({
-        total: line.total,
-        nom: line.professeurDetails[0].nom,
-        prenom: line.professeurDetails[0].prenom,
+        Total: line.total,
+        Professeur: line.professeurDetails[0].nom + ' ' + line.professeurDetails[0].prenom,
         imagePath: line.professeurDetails[0].imagePath,
-        matiere: line.professeurDetails[0].matiere.intitule
+        Matiere: line.professeurDetails[0].matiere.intitule
       }) ;
     }
     return result ;
