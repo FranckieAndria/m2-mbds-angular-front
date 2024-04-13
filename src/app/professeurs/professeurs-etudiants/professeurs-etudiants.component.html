@@ -31,12 +31,12 @@
         <mat-card-content>
           <div class="my-card-content">
             <div class="my-card-content-slice">
-              <b>Date de création : </b>{{ d.dateDeCreation }}<br>
-              <b>Date de rendu : </b>{{ d.dateDeRendu }}<br>
+              <b>Date de création : </b>{{ d.dateDeCreation | date : "dd-MM-yyyy"  }}<br>
+              <b>Date de rendu : </b>{{ d.dateDeRendu ? (d.dateDeRendu | date : "dd-MM-yyyy")  : "Pas encore rendu" }}<br>
             </div>
             <div class="my-card-content-slice">
-              <b>Note : </b>{{ d.note }}<br>
-              <b>Remarque : </b>{{ d.remarque }}
+              <b>Note : </b>{{ d.note > 0 ? d.note + "/20" : "Pas encore noté" }}<br>
+              <b>Remarque : </b>{{ d.remarque.length > 30 ? d.remarque.substring(0, 30) + "..." : d.remarque }}
             </div>
           </div>
         </mat-card-content>
@@ -45,13 +45,13 @@
 
     <mat-grid-tile>
       <div class="details-action-button-container">
-        <button mat-flat-button color="primary" class="details-action-button">
+        <button mat-flat-button color="primary" class="details-action-button" [disabled]="d.rendu">
           <mat-icon>done_all</mat-icon> Marquer rendu
         </button>
-        <button mat-raised-button class="details-action-button">
+        <button mat-raised-button class="details-action-button" [disabled]="d.note >= 0" >
           <mat-icon>iso</mat-icon> Noter
         </button>
-        <button mat-stroked-button color="primary" class="details-action-button">
+        <button mat-stroked-button color="primary" class="details-action-button" [disabled]="d.remarque != ''">
           <mat-icon>edit</mat-icon> Remarque
         </button>
       </div>
@@ -61,18 +61,14 @@
 
   } @else {
 
-  <mat-paginator
-    #paginator
-    class="demo-paginator"
-    [length]="totalDocs"
-    [pageSize]="limit"
-    [showFirstLastButtons]="true"
-    [pageSizeOptions]="[5, 10, 25]"
-    [pageIndex]="page"
-    (page)="handlePageEvent($event)"
-    aria-label="Select page"
-  >
-  </mat-paginator>
+    <div>
+      <input
+        class="search-input"
+        type="search"
+        placeholder="Rechercher..."
+        [(ngModel)]="searchText"
+      />
+    </div>
 
   <mat-divider></mat-divider>
 

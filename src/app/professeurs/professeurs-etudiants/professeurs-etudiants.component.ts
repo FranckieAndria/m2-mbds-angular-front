@@ -10,11 +10,13 @@ import { PreloaderService } from 'app/shared/preload.service';
 import { ProfesseurService } from '../professeurs.service';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-professeurs-etudiants',
   standalone: true,
   imports: [
+    FilterPipe,
     CommonModule,
     MatPaginatorModule,
     FilterPipe,
@@ -23,7 +25,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatSliderModule,
     MatButtonModule,
     MatGridListModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule
   ],
   templateUrl: './professeurs-etudiants.component.html',
   styleUrls: ['./professeurs-etudiants.component.css']

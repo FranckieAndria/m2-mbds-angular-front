@@ -11,11 +11,11 @@ mat-card {
 }
 
 .my-mat-grid-tile {
-  width: 100%;
+  width: 95%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3px 0px 3px 0px;
+  padding: 5px 0px 5px 0px;
   border-radius: 10px;
 }
 
