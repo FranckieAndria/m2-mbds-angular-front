@@ -20,6 +20,38 @@ mat-card-content {
   text-align: center;
 }
 
+.details-action-button-container {
+  padding-top: 4%;
+}
+
+.details-action-button {
+  margin-top: 1%;
+  width: 100%;
+}
+
+.my-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.my-card-content-slice {
+  width: 40%;
+  text-align: left;
+}
+
+.details-card {
+  margin: 2% 2% 0% 2%;
+}
+
+.big-profil {
+  max-height: 150%;
+}
+
+.info-grid {
+  margin-left: -3%;
+  font-size: 36px !important;
+}
+
 .nom-etudiant {
   margin-top: -5%;
 }

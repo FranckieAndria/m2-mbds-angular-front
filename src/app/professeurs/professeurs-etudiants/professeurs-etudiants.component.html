@@ -3,10 +3,75 @@
     <h1>CHARGEMENT ...</h1>
   </div>
 
-  <h2>Mes étudiants</h2>
+  <h2>@if(isDetails) { Détails d'un Etudiant } @else { Mes étudiants }</h2>
 
-  <mat-paginator #paginator class="demo-paginator" [length]="totalDocs" [pageSize]="limit" [showFirstLastButtons]="true"
-    [pageSizeOptions]="[5, 10, 25]" [pageIndex]="page" (page)="handlePageEvent($event)" aria-label="Select page">
+  @if(isDetails && details != undefined) {
+
+  <mat-grid-list cols="3" rowHeight="3:1">
+    <mat-grid-tile colspan="2">
+      <img src="{{ details[0].etudiant[0].imagePath }}" class="big-profil" />
+      <div class="info-grid">
+        <b>{{ details[0].etudiant[0].prenom }} {{ details[0].etudiant[0].nom }}</b><br />
+        {{ details[0].etudiant[0].email }}
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-flat-button color="primary" (click)="revenirListe()">
+        <mat-icon>menu</mat-icon> Revenir à la liste
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-grid-list *ngFor="let d of details" cols="3" rowHeight="3:1">
+    <mat-grid-tile colspan="2">
+      <mat-card class="sublime-card details-card">
+        <mat-card-header>
+          <mat-card-title>{{ d.titre }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="my-card-content">
+            <div class="my-card-content-slice">
+              <b>Date de création : </b>{{ d.dateDeCreation }}<br>
+              <b>Date de rendu : </b>{{ d.dateDeRendu }}<br>
+            </div>
+            <div class="my-card-content-slice">
+              <b>Note : </b>{{ d.note }}<br>
+              <b>Remarque : </b>{{ d.remarque }}
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="details-action-button-container">
+        <button mat-flat-button color="primary" class="details-action-button">
+          <mat-icon>done_all</mat-icon> Marquer rendu
+        </button>
+        <button mat-raised-button class="details-action-button">
+          <mat-icon>iso</mat-icon> Noter
+        </button>
+        <button mat-stroked-button color="primary" class="details-action-button">
+          <mat-icon>edit</mat-icon> Remarque
+        </button>
+      </div>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+
+  } @else {
+
+  <mat-paginator
+    #paginator
+    class="demo-paginator"
+    [length]="totalDocs"
+    [pageSize]="limit"
+    [showFirstLastButtons]="true"
+    [pageSizeOptions]="[5, 10, 25]"
+    [pageIndex]="page"
+    (page)="handlePageEvent($event)"
+    aria-label="Select page"
+  >
   </mat-paginator>
 
   <mat-divider></mat-divider>
@@ -18,23 +83,34 @@
         <mat-card-header>
           <mat-card-title>
             <div class="image-with-name">
-              <img src="{{ e.etudiantDetails[0].imagePath }}" class="profile-image img-etudiant" />
+              <img
+                src="{{ e.etudiantDetails[0].imagePath }}"
+                class="profile-image img-etudiant"
+              />
             </div>
 
-            <p class="nom-etudiant">{{ e.etudiantDetails[0].prenom }} {{ e.etudiantDetails[0].nom }}</p>
-
+            <p class="nom-etudiant">
+              {{ e.etudiantDetails[0].prenom }} {{ e.etudiantDetails[0].nom }}
+            </p>
           </mat-card-title>
         </mat-card-header>
 
         <mat-card-content>
-          <p>Nbre d'assignments : <b>{{ e.total | number: '2.' }}</b></p>
+          <p>
+            Nbre d'assignments : <b>{{ e.total | number : "2." }}</b>
+          </p>
         </mat-card-content>
 
         <mat-card-footer>
-          <a mat-flat-button color="primary">Plus de détails</a>
+          <a
+            mat-flat-button
+            color="primary"
+            (click)="detailsEtudiant(e.etudiantDetails[0]._id)"
+            >Plus de détails</a
+          >
         </mat-card-footer>
       </mat-card>
     </div>
   </div>
-
+  }
 </div>
