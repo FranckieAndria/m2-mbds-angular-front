@@ -81,6 +81,8 @@ export class ProfesseursComponent implements OnInit {
         this.isMobile = false;
       }
     });
+
+    this.loadUserName();
   }
 
   loadUserName() {

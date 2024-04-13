@@ -1,3 +1,112 @@
-<p>
-  professeurs-etudiants works!
-</p>
+<div class="container">
+  <div id="globalLoader" class="global-loader">
+    <h1>CHARGEMENT ...</h1>
+  </div>
+
+  <h2>@if(isDetails) { Détails d'un Etudiant } @else { Mes étudiants }</h2>
+
+  @if(isDetails && details != undefined) {
+
+  <mat-grid-list cols="3" rowHeight="3:1">
+    <mat-grid-tile colspan="2">
+      <img src="{{ details[0].etudiant[0].imagePath }}" class="big-profil" />
+      <div class="info-grid">
+        <b>{{ details[0].etudiant[0].prenom }} {{ details[0].etudiant[0].nom }}</b><br />
+        {{ details[0].etudiant[0].email }}
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-flat-button color="primary" (click)="revenirListe()">
+        <mat-icon>menu</mat-icon> Revenir à la liste
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-grid-list *ngFor="let d of details" cols="3" rowHeight="3:1">
+    <mat-grid-tile colspan="2">
+      <mat-card class="sublime-card details-card">
+        <mat-card-header>
+          <mat-card-title>{{ d.titre }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="my-card-content">
+            <div class="my-card-content-slice">
+              <b>Date de création : </b>{{ d.dateDeCreation | date : "dd-MM-yyyy"  }}<br>
+              <b>Date de rendu : </b>{{ d.dateDeRendu ? (d.dateDeRendu | date : "dd-MM-yyyy")  : "Pas encore rendu" }}<br>
+            </div>
+            <div class="my-card-content-slice">
+              <b>Note : </b>{{ d.note > 0 ? d.note + "/20" : "Pas encore noté" }}<br>
+              <b>Remarque : </b>{{ d.remarque.length > 30 ? d.remarque.substring(0, 30) + "..." : d.remarque }}
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="details-action-button-container">
+        <button mat-flat-button color="primary" class="details-action-button" [disabled]="d.rendu">
+          <mat-icon>done_all</mat-icon> Marquer rendu
+        </button>
+        <button mat-raised-button class="details-action-button" [disabled]="d.note >= 0" >
+          <mat-icon>iso</mat-icon> Noter
+        </button>
+        <button mat-stroked-button color="primary" class="details-action-button" [disabled]="d.remarque != ''">
+          <mat-icon>edit</mat-icon> Remarque
+        </button>
+      </div>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+
+  } @else {
+
+    <div>
+      <input
+        class="search-input"
+        type="search"
+        placeholder="Rechercher..."
+        [(ngModel)]="searchText"
+      />
+    </div>
+
+  <mat-divider></mat-divider>
+
+  &nbsp;&nbsp;&nbsp;
+  <div class="div-card">
+    <div *ngFor="let e of etudiants | filter : searchText">
+      <mat-card class="sublime-card">
+        <mat-card-header>
+          <mat-card-title>
+            <div class="image-with-name">
+              <img
+                src="{{ e.etudiantDetails[0].imagePath }}"
+                class="profile-image img-etudiant"
+              />
+            </div>
+
+            <p class="nom-etudiant">
+              {{ e.etudiantDetails[0].prenom }} {{ e.etudiantDetails[0].nom }}
+            </p>
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p>
+            Nbre d'assignments : <b>{{ e.total | number : "2." }}</b>
+          </p>
+        </mat-card-content>
+
+        <mat-card-footer>
+          <a
+            mat-flat-button
+            color="primary"
+            (click)="detailsEtudiant(e.etudiantDetails[0]._id)"
+            >Plus de détails</a
+          >
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+  }
+</div>
