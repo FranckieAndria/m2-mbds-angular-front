@@ -64,6 +64,9 @@ export class ProfesseursAssignmentsComponent implements OnInit {
   // Define an empty array for the target data
   targetBooks: string[] = [];
 
+  // tableau des assignments POUR AFFICHAGE
+  displayedColumns: string[] = ['nom', 'dateDeRendu', 'rendu'];
+
   // pour virtual scroll infini
   @ViewChild('scroller') scroller!: CdkVirtualScrollViewport;
 
@@ -164,6 +167,12 @@ export class ProfesseursAssignmentsComponent implements OnInit {
    //Exemple
    // Define your source data (e.g., books)
   
+   // Pour le composant angular material paginator
+  handlePageEvent(event: PageEvent) {
+    this.page = event.pageIndex + 1;
+    this.limit = event.pageSize;
+    this.getAssignmentsFromService();
+  }
 
 
 
