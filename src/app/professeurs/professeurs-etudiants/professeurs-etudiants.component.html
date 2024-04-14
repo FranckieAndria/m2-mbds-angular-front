@@ -45,10 +45,10 @@
 
     <mat-grid-tile>
       <div class="details-action-button-container">
-        <button mat-flat-button color="primary" class="details-action-button" [disabled]="d.rendu">
+        <button mat-flat-button color="primary" class="details-action-button" [disabled]="d.rendu" (click)="rendreNoter()">
           <mat-icon>done_all</mat-icon> Marquer rendu
         </button>
-        <button mat-raised-button class="details-action-button" [disabled]="d.note >= 0" >
+        <button mat-raised-button class="details-action-button" [disabled]="d.note >= 0" (click)="rendreNoter()">
           <mat-icon>iso</mat-icon> Noter
         </button>
         <button mat-stroked-button color="primary" class="details-action-button" [disabled]="d.remarque != ''">

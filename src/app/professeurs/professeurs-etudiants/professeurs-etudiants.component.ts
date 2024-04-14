@@ -11,6 +11,8 @@ import { ProfesseurService } from '../professeurs.service';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { AssignmentRenduComponent } from 'app/shared/assignment-rendu/assignment-rendu.component';
 
 @Component({
   selector: 'app-professeurs-etudiants',
@@ -56,10 +58,23 @@ export class ProfesseursEtudiantsComponent implements OnInit {
   isDetails = false;
   details: any;
 
-  constructor(private professeurService: ProfesseurService, private preloader: PreloaderService) { }
+  constructor(
+    private professeurService: ProfesseurService, 
+    private preloader: PreloaderService,
+    public dialog: MatDialog  
+  ) { }
 
   ngOnInit() {
     this.getEtudiants();
+  }
+
+  // Rendre | noter un assignment
+  rendreNoter() {
+    this.dialog.open(AssignmentRenduComponent, {
+      data: {
+        assign: undefined
+      },
+    });
   }
 
   // Revenir à la liste
