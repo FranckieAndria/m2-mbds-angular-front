@@ -26,6 +26,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 @Component({
   selector: 'app-professeurs-assignments',
   standalone: true,
+  providers: [],
   templateUrl: './professeurs-assignments.component.html',
   styleUrls: ['./professeurs-assignments.component.css'],
   imports :[
@@ -40,8 +41,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
     MatTableModule,
     MatPaginatorModule,
     MatListModule,
-    MatSliderModule,
-
+    MatSliderModule
   ]
 })
 export class ProfesseursAssignmentsComponent implements OnInit {
@@ -89,7 +89,10 @@ export class ProfesseursAssignmentsComponent implements OnInit {
   ngAfterViewInit() {
     console.log(' ----- after view init ----');
 
-    if (!this.scroller) return;
+    if (!this.scroller){
+      console.log('Error data');
+      return;
+    } 
 
     // on s'abonne à l'évènement scroll du virtual scroller
     this.scroller
@@ -152,6 +155,7 @@ export class ProfesseursAssignmentsComponent implements OnInit {
        .subscribe((data) => {
          // les données arrivent ici au bout d'un certain temps
          console.log('Données arrivées');
+         
          this.assignments = [...this.assignments, ...data.docs];
          this.totalDocs = data.totalDocs;
          this.totalPages = data.totalPages;

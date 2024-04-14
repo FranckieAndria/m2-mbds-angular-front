@@ -44,22 +44,22 @@
 
 <p>Version avec scrolling infini</p>
 
-  <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport" #scroller>
-    <mat-list *cdkVirtualFor="let a of assignments" class="example-item">
-      <h3 mat-subheader>
-        Date limite: {{ a.dateDeRendu | date : "dd/MM/yy" }}
-      </h3>
-      <mat-list-item>
-        <p>{{ a.titre }} id = {{ a._id }}, rendu : {{ a.rendu }}</p>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <!-- <a routerLink="">
-        
-      </a> -->
-    </mat-list>
-  </cdk-virtual-scroll-viewport>
+  <div>
+    <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport" #scroller>
+      <mat-list *cdkVirtualFor="let a of assignments" class="example-item">
+        <h3 mat-subheader>
+          Date limite: {{ a.dateDeRendu | date : "dd/MM/yy" }}
+        </h3>
+        <mat-list-item>
+          <p>{{ a.titre }} id = {{ a._id }}, rendu : {{ a.rendu }}</p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </cdk-virtual-scroll-viewport>
+  </div>
+  
 
-  <p>Drag and drop</p>
+  <!-- <p>Drag and drop</p>
   <div class="grid-container">
     <mat-grid-list cols="4" rowHeight="100px" cdkDropList [cdkDropListData]="books" class="example-list" (cdkDropListDropped)="drop($event)">
       <mat-grid-tile cdkDrag *ngFor="let book of books" [style.background]="'lightblue'">{{ book }}</mat-grid-tile>
@@ -68,5 +68,5 @@
     <mat-grid-list cols="4" rowHeight="100px" cdkDropList [cdkDropListData]="targetBooks" class="example-list" (cdkDropListDropped)="drop($event)">
       <mat-grid-tile cdkDrag *ngFor="let book of targetBooks" [style.background]="'lightgreen'">{{ book }}</mat-grid-tile>
     </mat-grid-list>
-  </div>
+  </div> -->
   

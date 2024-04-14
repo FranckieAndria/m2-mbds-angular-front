@@ -45,4 +45,14 @@
     /* Style the tile after animation completes */
     background-color: #d0d0d0;
   }
+
+  .example-viewport {
+    height: 300px;
+    width: 800px;
+    border: 1px solid black;
+  }
+  
+  .example-item {
+    height: 50px;
+  }
   
