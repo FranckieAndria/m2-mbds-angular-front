@@ -1,0 +1,23 @@
+mat-dialog-content {
+    min-width: 700px !important;
+}
+
+mat-form-field {
+    width: 90% !important;
+}
+
+mat-form-field {
+    margin-top: -3% !important;
+}
+
+h3 {
+    font-weight:700 ;
+}
+
+h2 {
+    margin-bottom: 3%;
+}
+
+.image-matiere {
+    margin-left: 2%;
+}
