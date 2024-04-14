@@ -4,17 +4,47 @@
   <ul>
     <li>En mettant un assignment comme <b><i>rendu</i></b>, vous pouvez également donner <b><i>une note</i></b> et enregistrer <b><i>une remarque</i></b></li>
     <li>Vous pouvez pas noter un assignment <b><i>non-rendu</i></b></li>
+    <li>Vous pouvez ajouter <b><i>une remarque</i></b> à tout moment</li>
   </ul>
+  <mat-divider></mat-divider>
   @if (assignment && assignment.assign) {
+    <br>
     <b>Titre de l'assignment : </b>{{ assignment.assign.titre }} <br>
     <b>Date de création : </b>{{ assignment.assign.dateDeCreation | date: "dd-MM-yyyy" }}
     @if (assignment.rendre) { 
-      <p>Vous allez rendre</p>
+
+    <div class="my-form">
+      <div class="my-form-label">
+        <mat-label>Note</mat-label>
+      </div>
+      <div class="my-form-input">
+        <mat-slider min="0" max="20" step="1" thumbLabel>
+          <input matSliderThumb [(ngModel)]="note" />
+        </mat-slider>
+        <mat-label class="note-show">{{ note < 10 ? '0' + note : note }}/20</mat-label>
+      </div>
+    </div>
     }
-    @if (assignment.noter) { 
-      <p>Vous allez noter</p>
-    }
-    @if (assignment.remarque) { <p>Vous allez effectuer une remarque</p> }
+    @if (assignment.remarque) { 
+      <form [formGroup]="firstFormGroup">
+        <div class="my-form">
+          <div class="my-form-label">
+            <mat-label>Remarque</mat-label>
+          </div>
+          <div class="my-form-input">
+            <mat-form-field>
+              <input
+                matInput
+                [(ngModel)]="remarque"
+                name="remarque"
+                formControlName="firstCtrl"
+                required
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+     }
   }
 </mat-dialog-content>
 
