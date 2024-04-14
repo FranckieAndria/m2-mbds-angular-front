@@ -46,13 +46,44 @@
     background-color: #d0d0d0;
   }
 
-  .example-viewport {
-    height: 300px;
-    width: 800px;
-    border: 1px solid black;
-  }
-  
-  .example-item {
-    height: 50px;
-  }
+/* Amélioration du style pour la liste virtuelle */
+.example-viewport {
+  height: 300px;
+  width: 800px;
+  border: 1px solid #e0e0e0; /* Utilisation d'une couleur plus douce pour la bordure */
+  overflow: auto; /* Ajout d'un défilement pour les éléments qui dépassent la hauteur */
+  background-color: #f9f9f9; /* Fond légèrement plus clair */
+  border-radius: 10px; /* Coins arrondis pour un aspect moderne */
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1); /* Ombre légère pour la profondeur */
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+/* Style pour chaque élément de la liste */
+.example-item {
+  height: 50px;
+  padding: 10px; /* Espacement interne pour un meilleur espacement du contenu */
+  display: flex; /* Utilisation de flexbox pour aligner le contenu */
+  align-items: center; /* Centrage vertical du contenu */
+  border-bottom: 1px solid #e0e0e0; /* Ligne de séparation entre les éléments */
+}
+
+/* Style pour le sous-titre */
+.example-item h3.mat-subheader {
+  font-size: 14px; /* Taille de police légèrement réduite */
+  margin-bottom: 5px; /* Espacement inférieur pour séparer du titre principal */
+}
+
+/* Style pour le texte du paragraphe */
+.example-item p {
+  font-size: 14px; /* Taille de police légèrement augmentée */
+  margin: 0; /* Suppression des marges par défaut */
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+/* Style pour la ligne de séparation */
+.mat-divider {
+  margin: 10px 0; /* Espacement supérieur et inférieur pour la ligne de séparation */
+  border-top: 1px solid #e0e0e0; /* Ligne de séparation plus subtile */
+}
+
   
