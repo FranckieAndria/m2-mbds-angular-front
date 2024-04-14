@@ -1,8 +1,10 @@
 <h2 mat-dialog-title>Rendre / noter un assignment</h2>
 
 <mat-dialog-content class="mat-typography">
-  @if (assignment) {
-    
+  @if (assignment && assignment.assign) {
+    @if (assignment.rendre) { <p>"Vous allez rendre"</p> }
+    @if (assignment.noter) { <p>"Vous allez noter"</p> }
+    @if (assignment.remarque) { <p>"Vous allez effectuer une remarque"</p> }
   }
 </mat-dialog-content>
 

@@ -29,6 +29,8 @@ export class AssignmentRenduComponent {
 
   constructor(public dialogRef: MatDialogRef<AssignmentRenduComponent>,
     @Inject(MAT_DIALOG_DATA) public assign: any
-  ) { }
+  ) {
+    this.assignment = assign;
+  }
 
 }

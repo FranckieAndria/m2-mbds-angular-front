@@ -69,10 +69,13 @@ export class ProfesseursEtudiantsComponent implements OnInit {
   }
 
   // Rendre | noter un assignment
-  rendreNoter() {
+  rendreNoter(assign: any, rendre: boolean, noter: boolean, remarque: boolean) {
     this.dialog.open(AssignmentRenduComponent, {
       data: {
-        assign: undefined
+        assign: assign,
+        rendre: rendre,
+        noter: noter,
+        remarque: remarque
       },
     });
   }
