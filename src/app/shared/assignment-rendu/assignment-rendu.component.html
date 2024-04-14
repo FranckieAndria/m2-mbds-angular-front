@@ -1,13 +1,28 @@
-<h2 mat-dialog-title>Rendre / noter un assignment</h2>
+<h2 mat-dialog-title><mat-icon>bookmark</mat-icon> Rendre / noter un assignment</h2>
 
 <mat-dialog-content class="mat-typography">
+  <ul>
+    <li>En mettant un assignment comme <b><i>rendu</i></b>, vous pouvez également donner <b><i>une note</i></b> et enregistrer <b><i>une remarque</i></b></li>
+    <li>Vous pouvez pas noter un assignment <b><i>non-rendu</i></b></li>
+  </ul>
   @if (assignment && assignment.assign) {
-    @if (assignment.rendre) { <p>"Vous allez rendre"</p> }
-    @if (assignment.noter) { <p>"Vous allez noter"</p> }
-    @if (assignment.remarque) { <p>"Vous allez effectuer une remarque"</p> }
+    <b>Titre de l'assignment : </b>{{ assignment.assign.titre }} <br>
+    <b>Date de création : </b>{{ assignment.assign.dateDeCreation | date: "dd-MM-yyyy" }}
+    @if (assignment.rendre) { 
+      <p>Vous allez rendre</p>
+    }
+    @if (assignment.noter) { 
+      <p>Vous allez noter</p>
+    }
+    @if (assignment.remarque) { <p>Vous allez effectuer une remarque</p> }
   }
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Annuler et fermer</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+    <mat-icon>cancel</mat-icon> Annuler et fermer
+  </button>
+  <button mat-flat-button color="primary">
+    <mat-icon>check_circle</mat-icon> Enregistrer
+  </button>
 </mat-dialog-actions>

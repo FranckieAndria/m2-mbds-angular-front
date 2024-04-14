@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
 @Component({
@@ -18,7 +19,8 @@ import { MatInputModule } from '@angular/material/input';
     MatDialogContent,
     MatDialogActions,
     MatDialogClose,
-    CommonModule
+    CommonModule,
+    MatIconModule
   ],
   templateUrl: './assignment-rendu.component.html',
   styleUrls: ['./assignment-rendu.component.css']
@@ -31,6 +33,7 @@ export class AssignmentRenduComponent {
     @Inject(MAT_DIALOG_DATA) public assign: any
   ) {
     this.assignment = assign;
+console.log(this.assignment);
   }
 
 }
