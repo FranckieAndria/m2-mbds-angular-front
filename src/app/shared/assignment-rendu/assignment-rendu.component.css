@@ -10,6 +10,25 @@ mat-slider {
     width: 80%;
 }
 
+mat-spinner {
+    max-width: 20px;
+}
+
+.image-success {
+    max-width: 7%;
+}
+
+.image-success-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-success {
+    color: #2BB673;
+    margin-left: 1%;
+}
+
 .note-show {
     margin-left: 5%;
     color: #3F51B5;

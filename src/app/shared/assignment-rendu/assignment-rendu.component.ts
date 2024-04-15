@@ -7,6 +7,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSliderModule } from '@angular/material/slider';
 import { ProfesseurService } from 'app/professeurs/professeurs.service';
 
@@ -26,7 +27,8 @@ import { ProfesseurService } from 'app/professeurs/professeurs.service';
     CommonModule,
     MatIconModule,
     MatSliderModule,
-    MatDividerModule
+    MatDividerModule,
+    MatProgressSpinnerModule
   ],
   templateUrl: './assignment-rendu.component.html',
   styleUrls: ['./assignment-rendu.component.css']
@@ -38,9 +40,12 @@ export class AssignmentRenduComponent implements OnInit {
 
   // Les inputs dans le formulaire
   firstFormGroup!: FormGroup;
-  rendu: boolean = true;
   note: number = 20;
   remarque: string = '';
+
+  // Gestion des animations et informations sur le Modal
+  isOperating: boolean = false;
+  isSuccess: boolean = false;
 
   constructor(public dialogRef: MatDialogRef<AssignmentRenduComponent>,
     @Inject(MAT_DIALOG_DATA) public assign: any, private _formBuilder: FormBuilder, private professeurService: ProfesseurService
@@ -50,8 +55,11 @@ export class AssignmentRenduComponent implements OnInit {
 
   // Rendre - noter l'assignment
   rendreNoter() {
-    this.professeurService.noterRendre(this.assignment._id, this.rendu, this.note, this.remarque).subscribe((data) => {
-      console.log(data);
+    this.isOperating = true;
+    this.professeurService.noterRendre(this.assignment._id, this.assignment.rendre, this.note, this.remarque).subscribe((data) => {
+      if (data) {
+        this.isSuccess = true;
+      }
     });
   }
 
