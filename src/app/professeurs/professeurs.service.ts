@@ -11,14 +11,15 @@ export class ProfesseurService {
     constructor(private http: HttpClient) { }
 
     // Noter - rendre un assignment
-    noterRendre(id: string, rendu: boolean, note: number, remarque: string) {
+    noterRendre(id: string, rendu: boolean, note: number, remarque: string): Observable<any> {
         const url = environnement.baseUrl + environnement.baseAssignment + '/' + id;
+console.log(url);
         const body = {
             rendu: rendu,
             note: note,
             remarque: remarque
         };
-        return this.http.put(url, body);
+        return this.http.put<any>(url, body);
     }
 
     // Recherche

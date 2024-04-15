@@ -76,11 +76,13 @@
       <mat-spinner></mat-spinner>
     </button>
   } @else {
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
-      <mat-icon>cancel</mat-icon> Annuler et fermer
-    </button>
-    <button mat-flat-button color="primary" (click)="rendreNoter()">
-      <mat-icon>check_circle</mat-icon> Enregistrer
-    </button>
+      @if (!isSuccess) {
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+        <mat-icon>cancel</mat-icon> Annuler et fermer
+      </button>
+      <button mat-flat-button color="primary" (click)="rendreNoter()">
+        <mat-icon>check_circle</mat-icon> Enregistrer
+      </button>
+    }
   }
 </mat-dialog-actions>

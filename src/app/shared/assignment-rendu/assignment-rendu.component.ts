@@ -56,8 +56,10 @@ export class AssignmentRenduComponent implements OnInit {
   // Rendre - noter l'assignment
   rendreNoter() {
     this.isOperating = true;
-    this.professeurService.noterRendre(this.assignment._id, this.assignment.rendre, this.note, this.remarque).subscribe((data) => {
+    this.professeurService.noterRendre(this.assignment.assign._id, this.assignment.rendre, this.note, this.remarque).subscribe((data) => {
       if (data) {
+console.log(data);
+        this.isOperating = false;
         this.isSuccess = true;
       }
     });
