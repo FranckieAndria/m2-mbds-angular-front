@@ -9,15 +9,19 @@ import { Credentials } from 'app/shared/login/credentials.model';
 import { AuthService } from 'app/shared/login/auth.service';
 import { Router } from '@angular/router';
 import { environnement } from 'environnement/environnement';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, MatIconModule, MatInputModule, MatFormFieldModule, MatCardModule, MatButtonModule],
+  imports: [FormsModule, MatIconModule, MatInputModule, MatFormFieldModule, MatCardModule, MatButtonModule, MatProgressSpinnerModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  
+  // Connaissance que l'utilisateur se log
+  logging: boolean = false;
 
   // User trying to log
   user_role: string = 'etudiants';
@@ -43,6 +47,7 @@ export class LoginComponent {
   }
   
   login() {
+    this.logging = true;
     this.authService.login(this.credentials, this.user_role).subscribe(
       data => {
         if (data.logged) {
@@ -61,6 +66,7 @@ export class LoginComponent {
         } else {
           this.credentials.password = '';
           this.error_login = true;
+          this.logging = false;
         }
       }
     )

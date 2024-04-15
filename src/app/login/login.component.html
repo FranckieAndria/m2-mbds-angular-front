@@ -1,42 +1,52 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <div class="container">
-	<div class="screen">
-		<div class="screen__content">
+    <div class="screen">
+        <div class="screen__content">
             <div class="login">
                 <h1>Se connecter | {{ user_role_interface }}</h1>
                 <mat-form-field appearance="outline">
                     <mat-icon matSuffix>mail_outline</mat-icon>
                     <mat-label>Adresse éléctronique</mat-label>
-                    <input matInput [(ngModel)]="credentials.email" >
+                    <input matInput [(ngModel)]="credentials.email">
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                     <mat-label>Mot de passe</mat-label>
                     <input matInput [(ngModel)]="credentials.password">
                     <mat-icon matSuffix>remove_red_eye</mat-icon>
                 </mat-form-field>
+
+            @if (logging) {
+                <div class="login-div-button">
+                    <button mat-stroked-button color="primary" aria-label="Login en cours ...">
+                        <mat-spinner></mat-spinner>
+                    </button>
+                </div>
+            } @else {
                 <div class="login-div-button">
                     <button mat-raised-button color="primary" (click)="login()">Se connecter</button>
                 </div>
+            
                 <div class="login-div-button dessous">
                     <button mat-raised-button (click)="changeUser()">
                         <mat-icon>person_outline</mat-icon> Je suis {{ getOption() }}
                     </button>
                 </div>
+            }
             </div>
-        @if (error_login) {
+            @if (error_login) {
             <div class="error__message">
                 <button mat-flat-button color="warn">
                     <mat-icon>warning</mat-icon> Adresse éléctronique ou mot de passe incorrecte
                 </button>
             </div>
-        }
+            }
         </div>
         <div class="screen__background">
-			<span class="screen__background__shape screen__background__shape4"></span>
-			<span class="screen__background__shape screen__background__shape3"></span>		
-			<span class="screen__background__shape screen__background__shape2"></span>
-			<span class="screen__background__shape screen__background__shape1"></span>
-		</div>	
+            <span class="screen__background__shape screen__background__shape4"></span>
+            <span class="screen__background__shape screen__background__shape3"></span>
+            <span class="screen__background__shape screen__background__shape2"></span>
+            <span class="screen__background__shape screen__background__shape1"></span>
+        </div>
     </div>
 </div>
