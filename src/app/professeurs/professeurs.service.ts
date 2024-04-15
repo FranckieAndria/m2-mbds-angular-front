@@ -10,6 +10,17 @@ export class ProfesseurService {
 
     constructor(private http: HttpClient) { }
 
+    // Noter - rendre un assignment
+    noterRendre(id: string, rendu: boolean, note: number, remarque: string) {
+        const url = environnement.baseUrl + environnement.baseAssignment + '/' + id;
+        const body = {
+            rendu: rendu,
+            note: note,
+            remarque: remarque
+        };
+        return this.http.put(url, body);
+    }
+
     // Recherche
     details(titre: string, etudiant: string, rendu: number, page:number, limit: number): Observable<any> {
         const url = environnement.baseUrl + environnement.baseProfesseur + "/assignments/details" + this.createSearchQueryParameter(titre, etudiant, rendu, page, limit);

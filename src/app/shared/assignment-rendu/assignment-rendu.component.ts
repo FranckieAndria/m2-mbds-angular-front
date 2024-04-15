@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
+import { ProfesseurService } from 'app/professeurs/professeurs.service';
 
 @Component({
   selector: 'app-assignment-rendu',
@@ -37,14 +38,21 @@ export class AssignmentRenduComponent implements OnInit {
 
   // Les inputs dans le formulaire
   firstFormGroup!: FormGroup;
+  rendu: boolean = true;
   note: number = 20;
   remarque: string = '';
 
   constructor(public dialogRef: MatDialogRef<AssignmentRenduComponent>,
-    @Inject(MAT_DIALOG_DATA) public assign: any, private _formBuilder: FormBuilder
+    @Inject(MAT_DIALOG_DATA) public assign: any, private _formBuilder: FormBuilder, private professeurService: ProfesseurService
   ) {
     this.assignment = assign;
-console.log(this.assignment);
+  }
+
+  // Rendre - noter l'assignment
+  rendreNoter() {
+    this.professeurService.noterRendre(this.assignment._id, this.rendu, this.note, this.remarque).subscribe((data) => {
+      console.log(data);
+    });
   }
 
   ngOnInit(): void {
