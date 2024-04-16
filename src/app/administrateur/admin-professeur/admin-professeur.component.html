@@ -32,23 +32,23 @@
               <div class="one-side">
                 <form [formGroup]="firstFormGroup">
                   <div class="zone-input">
-                    <p>Nouveau nom</p>
+                    <p>Nouveau prénom</p>
                     <mat-form-field>
-                      <input matInput [(ngModel)]="nom" name="nom" formControlName="firstCtrl" />
+                      <input matInput [(ngModel)]="prenom" name="prenom" formControlName="prenomControl" />
                     </mat-form-field>
                   </div>
 
                   <div class="zone-input">
-                    <p>Nouveau prénom</p>
+                    <p>Nouveau nom</p>
                     <mat-form-field>
-                      <input matInput [(ngModel)]="prenom" name="prenom" formControlName="firstCtrl" />
+                      <input matInput [(ngModel)]="nom" name="nom" formControlName="nomControl" />
                     </mat-form-field>
                   </div>
 
                   <div class="zone-input">
                     <p>Nouvel email</p>
                     <mat-form-field>
-                      <input matInput [(ngModel)]="email" name="email" formControlName="firstCtrl" />
+                      <input matInput [(ngModel)]="email" name="email" formControlName="emailControl" />
                     </mat-form-field>
                   </div>
                 </form>
@@ -77,12 +77,12 @@
 
         <mat-card-footer>
         @if (modifie && idProfesseur == p._id) {
-          <a mat-flat-button color="primary">
-            <mat-icon>save_alt</mat-icon> Enregistrer les modifications
+          <a mat-flat-button color="primary" (click)="update()">
+          @if (saving) { <mat-spinner></mat-spinner> } @else { <mat-icon>save_alt</mat-icon> Enregistrer les modifications }
           </a>
         } @else {
           <a mat-raised-button
-            (click)="modifier(p._id)"
+            (click)="modifier(p)"
             ><mat-icon>edit</mat-icon> Modifier</a
           >
         }

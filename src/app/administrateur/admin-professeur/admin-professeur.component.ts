@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-admin-professeur',
@@ -24,7 +25,8 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
   ],
   templateUrl: './admin-professeur.component.html',
   styleUrls: ['./admin-professeur.component.css']
@@ -36,6 +38,7 @@ export class AdminProfesseurComponent implements OnInit {
   searchText: string = '';
 
   // Modification d'un professeur
+  saving: boolean = false;
   firstFormGroup!: FormGroup;
   modifie: boolean = false;
   idProfesseur: string = '';
@@ -45,23 +48,50 @@ export class AdminProfesseurComponent implements OnInit {
 
   constructor(private adminService: AdministrateurService, private _formBuilder: FormBuilder) { }
 
-  modifier(idProfesseur: string) {
-    this.clearUpdate();
-    this.idProfesseur = idProfesseur;
+  // Enregistrer les modifications
+  update() {
+    this.saving = true;
+    this.adminService.updateProfesseur({
+      nom: this.nom,
+      prenom: this.prenom,
+      email: this.email
+    }, this.idProfesseur).subscribe((data) => {
+      this.saving = false;
+      this.idProfesseur = '';
+      this.clearUpdate({
+        nom: '',
+        prenom: '',
+        email: ''
+      });
+      this.resetList();
+    }) ;
+  }
+
+  // Afficher les champs modifiable
+  modifier(professeur: any) {
+    this.clearUpdate(professeur);
+    this.idProfesseur = professeur._id;
     this.modifie = true;
   }
 
-  clearUpdate() {
-    this.nom = '';
-    this.prenom = '';
-    this.email = '';
+  // Nettoyer les champs
+  clearUpdate(professeur: any) {
+    this.nom = professeur.nom;
+    this.prenom = professeur.prenom;
+    this.email = professeur.email;
   }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
+      nomControl: ['', Validators.required],
+      prenomControl: ['', Validators.required],
+      emailControl: ['', Validators.required],
     });
 
+    this.resetList();
+  }
+
+  resetList() {
     this.adminService.getProfesseurs().subscribe((data) => {
       this.professeurs = data;
     }) ;
