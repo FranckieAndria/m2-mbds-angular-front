@@ -212,19 +212,6 @@ export class ProfesseursAssignmentsComponent implements OnInit {
     console.log("Data : "+assignment.titre+" id: "+assignment._id);
     
     this.rendreNoter(assignment,true);
-    // try {
-    //   this.professeurService
-    //     .noterRendre(assignment._id,true,15,"Remarque")
-    //     .subscribe(()=>{
-    //       console.log("Données modifiées");
-    //       this.ngZone.run(() => {
-    //         this.getAssignmentsFromServicePourScrollInfiniNonRendu();
-    //         this.getAssignmentsFromServicePourScrollInfiniRendu();
-    //       });
-    //     });
-    // } catch (err) {
-    //   console.log("Erreur lors de l'exécution de la méthode");
-    // }
   }
 
 

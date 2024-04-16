@@ -49,6 +49,13 @@
   opacity: 0.7;
   transform: scale(1.05);
   cursor: grab;
+  /*transition: transform 0.2s ease, box-shadow 0.2s ease;*/
+}
+
+.example-item.cdk-drag-preview:hover {
+  /* Effet d'agitation au survol du curseur */
+  transform: scale(1.1) rotate(30deg);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .example-item.cdk-drag-placeholder {
