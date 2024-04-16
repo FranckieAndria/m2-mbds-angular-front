@@ -25,6 +25,7 @@
   display: flex; /* Utilisation de flexbox pour aligner le contenu */
   align-items: center; /* Centrage vertical du contenu */
   border-bottom: 1px solid #cfcfcf; /* Ligne de séparation entre les éléments */
+  transition: background-color 0.3s ease;
 }
 
 /* Style pour le sous-titre */
@@ -38,6 +39,23 @@
   font-size: 14px; /* Taille de police légèrement augmentée */
   margin: 0; /* Suppression des marges par défaut */
   font-family: 'Helvetica Neue', sans-serif;
+}
+
+.example-item.cdk-drag-preview {
+  /* Style for the dragged element */
+  background-color: #f0f0f0; /* Change to your desired color */
+  border: 2px dashed #310492;
+  border-radius: 10px; /* Coins arrondis pour un aspect moderne */
+  opacity: 0.7;
+  transform: scale(1.05);
+  cursor: grab;
+}
+
+.example-item.cdk-drag-placeholder {
+  /* Style for the placeholder (empty space) during drag */
+  background-color: #ddd; /* Change to your desired color */
+  border: 2px dashed #aaa;
+  opacity: 0.6;
 }
 
 /* Style pour la ligne de séparation */

@@ -24,7 +24,7 @@ export class ProfesseurService {
 
     getAssignmentsProfPagines(page:number, limit:number,rendu:number):Observable<any> {
         const url = environnement.baseUrl + environnement.baseProfesseur +"/assignments" +"?page=" + page + "&limit=" + limit+ "&rendu=" +rendu;
-        return this.http.get<any>(url);
+        return this.http.get<Assignment[]>(url);
     }
 
     // Recherche

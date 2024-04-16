@@ -19,10 +19,14 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatTable, MatTableModule } from '@angular/material/table';
 import { PageEvent, MatPaginatorModule } from '@angular/material/paginator';
 
+import { AssignmentRenduComponent } from 'app/shared/assignment-rendu/assignment-rendu.component';
+
 import { filter, map, pairwise, tap, throttleTime } from 'rxjs/operators';
 
 import { CdkDropList, DragDropModule } from '@angular/cdk/drag-drop';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { MatDialog } from '@angular/material/dialog';
+import { PreloaderService } from 'app/shared/preload.service';
 
 @Component({
   selector: 'app-professeurs-assignments',
@@ -74,8 +78,11 @@ export class ProfesseursAssignmentsComponent implements OnInit {
   // pour virtual scroll infini
   @ViewChild('scroller') scroller!: CdkVirtualScrollViewport;
 
-    constructor(private professeurService: ProfesseurService,
-      private ngZone: NgZone) { }  
+    constructor(
+      private professeurService: ProfesseurService,
+      private ngZone: NgZone,
+      private preloader: PreloaderService,
+      public dialog: MatDialog) { }  
 
   ngOnInit() {
     console.log('ngOnInit assignments, appelée AVANT affichage du composant');
@@ -126,6 +133,25 @@ export class ProfesseursAssignmentsComponent implements OnInit {
           });
       });
   }
+  
+  // Rendre | noter un assignment
+  rendreNoter(assign: any, remarque: boolean) {
+    const rendreDialog = this.dialog.open(AssignmentRenduComponent, {
+      data: {
+        assign: assign,
+        rendre: true,
+        remarque: remarque
+      },
+    });
+
+    rendreDialog.afterClosed().subscribe((result) => {
+      if (result) {
+        console.log("Done");
+        this.getAssignmentsFromServicePourScrollInfiniRendu();
+        this.getAssignmentsFromServicePourScrollInfiniNonRendu();
+      }
+    });
+  }
 
   // getAssignmentsFromService() {
     
@@ -161,6 +187,7 @@ export class ProfesseursAssignmentsComponent implements OnInit {
          this.prevPage = data.prevPage;
          this.hasNextPage = data.hasNextPage;
          this.hasPrevPage = data.hasPrevPage;
+         this.preloader.hide();
        });
      console.log('Requête envoyée');
    }
@@ -180,6 +207,7 @@ export class ProfesseursAssignmentsComponent implements OnInit {
            this.prevPage = data.prevPage;
            this.hasNextPage = data.hasNextPage;
            this.hasPrevPage = data.hasPrevPage;
+           this.preloader.hide();
          });
        console.log('Requête envoyée');
      }
@@ -189,22 +217,20 @@ export class ProfesseursAssignmentsComponent implements OnInit {
     const assignment = this.assignmentsNonRendu[event.previousIndex];
     console.log("Data : "+assignment.titre+" id: "+assignment._id);
     
-    //Code pour mettre à jour vos données ici
-    try {
-      this.professeurService
-        .noterRendre(assignment._id,true,15,"Remarque")
-        .subscribe(()=>{
-          console.log("Données modifiées");
-          this.ngZone.run(() => {
-            // Code à exécuter à l'intérieur de la zone Angular
-            // (déclenchera la détection des changements)
-            this.getAssignmentsFromServicePourScrollInfiniNonRendu();
-            this.getAssignmentsFromServicePourScrollInfiniRendu();
-          });
-        });
-    } catch (err) {
-      console.log("Erreur lors de l'exécution de la méthode");
-    }
+    this.rendreNoter(assignment,true);
+    // try {
+    //   this.professeurService
+    //     .noterRendre(assignment._id,true,15,"Remarque")
+    //     .subscribe(()=>{
+    //       console.log("Données modifiées");
+    //       this.ngZone.run(() => {
+    //         this.getAssignmentsFromServicePourScrollInfiniNonRendu();
+    //         this.getAssignmentsFromServicePourScrollInfiniRendu();
+    //       });
+    //     });
+    // } catch (err) {
+    //   console.log("Erreur lors de l'exécution de la méthode");
+    // }
   }
 
 
