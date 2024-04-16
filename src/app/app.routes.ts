@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfesseursComponent } from './professeurs/professeurs.component';
 import { EtudiantsComponent } from './etudiants/etudiants.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AdministrateurComponent } from './administrateur/administrateur.component';
 
 export const routes: Routes = [
   { 
@@ -26,6 +27,11 @@ export const routes: Routes = [
     path: "professeurs", 
     component: ProfesseursComponent,
     loadChildren: () => import('./professeurs/professeurs.module').then(m => m.ProfesseursModule)
+  },
+  {
+    path: "administrateurs",
+    component: AdministrateurComponent,
+    loadChildren: () => import('./administrateur/administrateur.module').then(m => m.AdministrateurModule)
   },
   {
     path: 'logout',
