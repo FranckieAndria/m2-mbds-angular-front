@@ -4,6 +4,7 @@ import { Assignment } from 'app/shared/models/assignment.model';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { AssignmentsService } from 'app/shared/assignments.service';
+import { ProfesseurService } from '../professeurs.service';
 import { AssignmentDetailComponent } from 'app/assignments/assignment-detail/assignment-detail.component';
 import {
   CdkVirtualScrollViewport,
@@ -50,13 +51,16 @@ export class ProfesseursAssignmentsComponent implements OnInit {
   // Pour la pagination
   page = 1;
   limit = 10;
+  nonRendu = -1;
+  rendu = 1
   totalDocs!: number;
   totalPages!: number;
   nextPage!: number;
   prevPage!: number;
   hasNextPage!: boolean;
   hasPrevPage!: boolean;
-  assignments: Assignment[] = [];
+  assignmentsRendu: Assignment[] = [];
+  assignmentsNonRendu: Assignment[] = [];
 
   //Exemple drag data
   books = ['Book 1', 'Book 2', 'Book 3', 'Book 4'];
@@ -70,22 +74,14 @@ export class ProfesseursAssignmentsComponent implements OnInit {
   // pour virtual scroll infini
   @ViewChild('scroller') scroller!: CdkVirtualScrollViewport;
 
-  constructor(private assignmentsService: AssignmentsService,
-    private ngZone: NgZone) { }
+    constructor(private professeurService: ProfesseurService,
+      private ngZone: NgZone) { }  
 
   ngOnInit() {
     console.log('ngOnInit assignments, appelée AVANT affichage du composant');
-    this.getAssignmentsFromService();
+    this.getAssignmentsFromServicePourScrollInfiniRendu();
+    this.getAssignmentsFromServicePourScrollInfiniNonRendu();
   }
-
-  // Handle the drop event
-  drop(event: any) {
-    const book = event.item.data;
-    console.log('Transfert');
-    this.targetBooks.push(book);
-    console.log('Livres: '+this.targetBooks);
-  }
-
   ngAfterViewInit() {
     console.log(' ----- after view init ----');
 
@@ -125,38 +121,40 @@ export class ProfesseursAssignmentsComponent implements OnInit {
           this.ngZone.run(() => {
             if (!this.hasNextPage) return;
             this.page = this.nextPage;
-            this.getAssignmentsFromServicePourScrollInfini();
+            this.getAssignmentsFromServicePourScrollInfiniRendu();
+            this.getAssignmentsFromServicePourScrollInfiniNonRendu();
           });
       });
   }
 
-  getAssignmentsFromService() {
-    // on récupère les assignments depuis le service
-    this.assignmentsService
-      .getAssignmentsPagines(this.page, this.limit)
-      .subscribe((data) => {
-        // les données arrivent ici au bout d'un certain temps
-        console.log('Données arrivées');
-        this.assignments = data.docs;
-        this.totalDocs = data.totalDocs;
-        this.totalPages = data.totalPages;
-        this.nextPage = data.nextPage;
-        this.prevPage = data.prevPage;
-        this.hasNextPage = data.hasNextPage;
-        this.hasPrevPage = data.hasPrevPage;
-      });
-    console.log('Requête envoyée');
-  }
+  // getAssignmentsFromService() {
+    
+    
+  //   this.professeurService
+  //     .getAssignmentsProfPagines(this.page,this.limit,0)
+  //     .subscribe((data) => {
+  //       // les données arrivent ici au bout d'un certain temps
+  //       console.log('Données arrivées');
+  //       this.assignments = data.docs;
+  //       this.totalDocs = data.totalDocs;
+  //       this.totalPages = data.totalPages;
+  //       this.nextPage = data.nextPage;
+  //       this.prevPage = data.prevPage;
+  //       this.hasNextPage = data.hasNextPage;
+  //       this.hasPrevPage = data.hasPrevPage;
+  //     });
+  //   console.log('Requête envoyée');
+  // }
 
-  getAssignmentsFromServicePourScrollInfini() {
+  getAssignmentsFromServicePourScrollInfiniRendu() {
   //   // on récupère les assignments depuis le service
-     this.assignmentsService
-       .getAssignmentsPagines(this.page, this.limit)
+    this.professeurService
+      .getAssignmentsProfPagines(this.page,this.limit,this.rendu)
        .subscribe((data) => {
          // les données arrivent ici au bout d'un certain temps
          console.log('Données arrivées');
          
-         this.assignments = [...this.assignments, ...data.docs];
+         this.assignmentsRendu = [...this.assignmentsRendu, ...data.docs];
          this.totalDocs = data.totalDocs;
          this.totalPages = data.totalPages;
          this.nextPage = data.nextPage;
@@ -167,16 +165,42 @@ export class ProfesseursAssignmentsComponent implements OnInit {
      console.log('Requête envoyée');
    }
 
+   getAssignmentsFromServicePourScrollInfiniNonRendu() {
+    //   // on récupère les assignments depuis le service
+      this.professeurService
+        .getAssignmentsProfPagines(this.page,this.limit,this.nonRendu)
+         .subscribe((data) => {
+           // les données arrivent ici au bout d'un certain temps
+           console.log('Données arrivées');
+           
+           this.assignmentsNonRendu = [...this.assignmentsNonRendu, ...data.docs];
+           this.totalDocs = data.totalDocs;
+           this.totalPages = data.totalPages;
+           this.nextPage = data.nextPage;
+           this.prevPage = data.prevPage;
+           this.hasNextPage = data.hasNextPage;
+           this.hasPrevPage = data.hasPrevPage;
+         });
+       console.log('Requête envoyée');
+     }
+
    //Drag and drop
-   //Exemple
-   // Define your source data (e.g., books)
+   onDropNonRendu(event: CdkDragDrop<string[]>) {
+    // Code pour gérer le dépose dans la zone "Non rendu"
+    // Mettez à jour vos données ici
+  }
+
+  onDropRendu(event: CdkDragDrop<string[]>) {
+    // Code pour gérer le dépose dans la zone "Rendu"
+    // Mettez à jour vos données ici
+  }
   
    // Pour le composant angular material paginator
-  handlePageEvent(event: PageEvent) {
-    this.page = event.pageIndex + 1;
-    this.limit = event.pageSize;
-    this.getAssignmentsFromService();
-  }
+  // handlePageEvent(event: PageEvent) {
+  //   this.page = event.pageIndex + 1;
+  //   this.limit = event.pageSize;
+  //   this.getAssignmentsFromService();
+  // }
 
 
 

@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Assignment } from "app/shared/models/assignment.model";
 import { environnement } from "environnement/environnement";
 import { Observable } from "rxjs";
 
@@ -19,6 +20,11 @@ export class ProfesseurService {
             remarque: remarque
         };
         return this.http.put(url, body);
+    }
+
+    getAssignmentsProfPagines(page:number, limit:number,rendu:number):Observable<any> {
+        const url = environnement.baseUrl + environnement.baseProfesseur +"/assignments" +"?page=" + page + "&limit=" + limit+ "&rendu=" +rendu;
+        return this.http.get<any>(url);
     }
 
     // Recherche
