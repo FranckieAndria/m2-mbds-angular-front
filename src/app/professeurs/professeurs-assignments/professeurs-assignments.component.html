@@ -9,7 +9,6 @@
         <cdk-virtual-scroll-viewport itemSize="50" cdkDropList class="example-viewport" (cdkDropListDropped)="onDropNonRendu($event)" #scroller>
           
           <mat-list  *cdkVirtualFor="let a of assignmentsNonRendu" class="example-item" cdkDrag>
-            
             <h3 mat-subheader>
               Date limite: {{ a.dateDeRendu | date : "dd/MM/yy" }}
             </h3>
@@ -24,8 +23,8 @@
 
       <div>
         <h3>Rendu :</h3>
-        <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport" cdkDropList (cdkDropListDropped)="onDropRendu($event)" #scroller>
-          <mat-list  *cdkVirtualFor="let a of assignmentsRendu" class="example-item" cdkDrag>
+        <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport" #scroller>
+          <mat-list  *cdkVirtualFor="let a of assignmentsRendu" class="example-item" >
             
             <h3 mat-subheader>
               Date limite: {{ a.dateDeRendu | date : "dd/MM/yy" }}

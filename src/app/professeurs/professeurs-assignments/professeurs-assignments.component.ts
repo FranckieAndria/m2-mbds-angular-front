@@ -21,7 +21,7 @@ import { PageEvent, MatPaginatorModule } from '@angular/material/paginator';
 
 import { filter, map, pairwise, tap, throttleTime } from 'rxjs/operators';
 
-import { DragDropModule } from '@angular/cdk/drag-drop';
+import { CdkDropList, DragDropModule } from '@angular/cdk/drag-drop';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
@@ -185,22 +185,17 @@ export class ProfesseursAssignmentsComponent implements OnInit {
      }
 
    //Drag and drop
-   onDropNonRendu(event: CdkDragDrop<string[]>) {
-    // Code pour gérer le dépose dans la zone "Non rendu"
-    // Mettez à jour vos données ici
+   onDropNonRendu(event: CdkDragDrop<Assignment[]>) {
+    const assignment = this.assignmentsNonRendu[event.previousIndex];
+    console.log("Data : "+assignment.titre+" id: "+assignment._id);
+    
+    // ... Code pour mettre à jour vos données ici
+    try {
+      this.professeurService.noterRendre(assignment._id,true,15,"Remarque");
+    } catch (err) {
+      console.log("Erreur lors de l'exécution de la méthode");
+    }
   }
-
-  onDropRendu(event: CdkDragDrop<string[]>) {
-    // Code pour gérer le dépose dans la zone "Rendu"
-    // Mettez à jour vos données ici
-  }
-  
-   // Pour le composant angular material paginator
-  // handlePageEvent(event: PageEvent) {
-  //   this.page = event.pageIndex + 1;
-  //   this.limit = event.pageSize;
-  //   this.getAssignmentsFromService();
-  // }
 
 
 
