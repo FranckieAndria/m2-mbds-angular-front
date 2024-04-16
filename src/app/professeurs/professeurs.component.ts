@@ -61,11 +61,6 @@ export class ProfesseursComponent implements OnInit {
         'link': 'etudiants'
       },
       {
-        'label': 'Recherche',
-        'icon': 'search',
-        'link': 'recherche'
-      },
-      {
         'label': 'Se déconnecter',
         'icon': 'logout',
         'link': '/logout'

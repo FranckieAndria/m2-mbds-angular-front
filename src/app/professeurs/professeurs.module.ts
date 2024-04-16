@@ -5,7 +5,6 @@ import { ProfesseursAssignmentsComponent } from './professeurs-assignments/profe
 import { RouterModule, Routes } from '@angular/router';
 import { ProfesseursComponent } from './professeurs.component';
 import { ProfesseursEtudiantsComponent } from './professeurs-etudiants/professeurs-etudiants.component';
-import { ProfesseursRechercheComponent } from './professeurs-recherche/professeurs-recherche.component';
 import { ProfesseursHomeComponent } from './professeurs-home/professeurs-home.component';
 
 const professeurRoutes: Routes = [
@@ -25,10 +24,6 @@ const professeurRoutes: Routes = [
   {
     path: 'assignments',
     component: ProfesseursAssignmentsComponent
-  },
-  {
-    path: 'recherche',
-    component: ProfesseursRechercheComponent
   }
 ];
 

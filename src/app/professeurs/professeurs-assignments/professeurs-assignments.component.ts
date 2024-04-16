@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Assignment } from 'app/shared/models/assignment.model';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
-import { AssignmentsService } from 'app/shared/assignments.service';
 import { ProfesseurService } from '../professeurs.service';
 import { AssignmentDetailComponent } from 'app/assignments/assignment-detail/assignment-detail.component';
 import {
@@ -14,7 +13,6 @@ import {
 import { RouterLink } from '@angular/router';
 
 import { MatListModule } from '@angular/material/list';
-import { MatButtonModule } from '@angular/material/button';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTable, MatTableModule } from '@angular/material/table';
 import { PageEvent, MatPaginatorModule } from '@angular/material/paginator';
@@ -47,7 +45,6 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class ProfesseursAssignmentsComponent implements OnInit {
 
-
   // Pour la pagination
   page = 1;
   limit = 10;
@@ -78,13 +75,10 @@ export class ProfesseursAssignmentsComponent implements OnInit {
       private ngZone: NgZone) { }  
 
   ngOnInit() {
-    console.log('ngOnInit assignments, appelée AVANT affichage du composant');
     this.getAssignmentsFromServicePourScrollInfiniRendu();
     this.getAssignmentsFromServicePourScrollInfiniNonRendu();
   }
   ngAfterViewInit() {
-    console.log(' ----- after view init ----');
-
     if (!this.scroller){
       console.log('Error data');
       return;
@@ -126,25 +120,6 @@ export class ProfesseursAssignmentsComponent implements OnInit {
           });
       });
   }
-
-  // getAssignmentsFromService() {
-    
-    
-  //   this.professeurService
-  //     .getAssignmentsProfPagines(this.page,this.limit,0)
-  //     .subscribe((data) => {
-  //       // les données arrivent ici au bout d'un certain temps
-  //       console.log('Données arrivées');
-  //       this.assignments = data.docs;
-  //       this.totalDocs = data.totalDocs;
-  //       this.totalPages = data.totalPages;
-  //       this.nextPage = data.nextPage;
-  //       this.prevPage = data.prevPage;
-  //       this.hasNextPage = data.hasNextPage;
-  //       this.hasPrevPage = data.hasPrevPage;
-  //     });
-  //   console.log('Requête envoyée');
-  // }
 
   getAssignmentsFromServicePourScrollInfiniRendu() {
   //   // on récupère les assignments depuis le service
@@ -196,8 +171,6 @@ export class ProfesseursAssignmentsComponent implements OnInit {
         .subscribe(()=>{
           console.log("Données modifiées");
           this.ngZone.run(() => {
-            // Code à exécuter à l'intérieur de la zone Angular
-            // (déclenchera la détection des changements)
             this.getAssignmentsFromServicePourScrollInfiniNonRendu();
             this.getAssignmentsFromServicePourScrollInfiniRendu();
           });
