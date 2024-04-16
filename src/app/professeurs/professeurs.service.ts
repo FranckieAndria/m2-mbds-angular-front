@@ -13,7 +13,6 @@ export class ProfesseurService {
     // Noter - rendre un assignment
     noterRendre(id: string, rendu: boolean, note: number, remarque: string): Observable<any> {
         const url = environnement.baseUrl + environnement.baseAssignment + '/' + id;
-console.log(url);
         const body = {
             rendu: rendu,
             note: note,

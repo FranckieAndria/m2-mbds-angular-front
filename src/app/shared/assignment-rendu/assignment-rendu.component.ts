@@ -51,14 +51,15 @@ export class AssignmentRenduComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public assign: any, private _formBuilder: FormBuilder, private professeurService: ProfesseurService
   ) {
     this.assignment = assign;
+    this.remarque = this.assignment.assign.remarque;
   }
 
   // Rendre - noter l'assignment
   rendreNoter() {
     this.isOperating = true;
-    this.professeurService.noterRendre(this.assignment.assign._id, this.assignment.rendre, this.note, this.remarque).subscribe((data) => {
+    const note = this.assignment.rendre ? this.note : -1;
+    this.professeurService.noterRendre(this.assignment.assign._id, this.assignment.rendre, note, this.remarque).subscribe((data) => {
       if (data) {
-console.log(data);
         this.isOperating = false;
         this.isSuccess = true;
       }

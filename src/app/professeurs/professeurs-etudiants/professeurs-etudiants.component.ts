@@ -55,6 +55,7 @@ export class ProfesseursEtudiantsComponent implements OnInit {
   searchText: any;
 
   // Détails d'un étudiant
+  idEtudiantDetails: string = '';
   isDetails = false;
   details: any;
 
@@ -70,12 +71,18 @@ export class ProfesseursEtudiantsComponent implements OnInit {
 
   // Rendre | noter un assignment
   rendreNoter(assign: any, rendre: boolean, remarque: boolean) {
-    this.dialog.open(AssignmentRenduComponent, {
+    const rendreDialog = this.dialog.open(AssignmentRenduComponent, {
       data: {
         assign: assign,
         rendre: rendre,
         remarque: remarque
       },
+    });
+
+    rendreDialog.afterClosed().subscribe((result) => {
+      if (result) {
+        this.detailsEtudiant(this.idEtudiantDetails);
+      }
     });
   }
 
@@ -104,6 +111,7 @@ export class ProfesseursEtudiantsComponent implements OnInit {
   detailsEtudiant(etudiant: string) {
     this.isDetails = true;
     this.professeurService.details('', etudiant, 0, 1, 100).subscribe((data) => {
+      this.idEtudiantDetails = etudiant;
       this.details = data.docs;
     })
   }
