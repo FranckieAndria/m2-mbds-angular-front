@@ -5,5 +5,6 @@ export const environnement = {
     baseAssignment: '/assignments',
     baseProfesseur: '/professeurs',
     ROLE_ETUDIANT: 'ETUDIANT',
-    ROLE_PROFESSEUR: 'PROFESSEUR'
+    ROLE_PROFESSEUR: 'PROFESSEUR',
+    ROLE_ADMINISTRATEUR: 'ADMINISTRATEUR'
 };

@@ -62,6 +62,7 @@ export class LoginComponent {
           // Redirection selon le rôle de l'utilisateur connecté
           if (data.user.role == environnement.ROLE_ETUDIANT) this.route.navigate(['/etudiants']);
           else if (data.user.role == environnement.ROLE_PROFESSEUR) this.route.navigate(['/professeurs']);
+          else if (data.user.role == environnement.ROLE_ADMINISTRATEUR) this.route.navigate(['/administrateurs']);
           else this.route.navigate(['/login']);
         } else {
           this.credentials.password = '';
