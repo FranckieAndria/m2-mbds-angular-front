@@ -185,13 +185,23 @@ export class ProfesseursAssignmentsComponent implements OnInit {
      }
 
    //Drag and drop
-   onDropNonRendu(event: CdkDragDrop<Assignment[]>) {
+  onDropNonRendu(event: CdkDragDrop<Assignment[]>) {
     const assignment = this.assignmentsNonRendu[event.previousIndex];
     console.log("Data : "+assignment.titre+" id: "+assignment._id);
     
-    // ... Code pour mettre à jour vos données ici
+    //Code pour mettre à jour vos données ici
     try {
-      this.professeurService.noterRendre(assignment._id,true,15,"Remarque");
+      this.professeurService
+        .noterRendre(assignment._id,true,15,"Remarque")
+        .subscribe(()=>{
+          console.log("Données modifiées");
+          this.ngZone.run(() => {
+            // Code à exécuter à l'intérieur de la zone Angular
+            // (déclenchera la détection des changements)
+            this.getAssignmentsFromServicePourScrollInfiniNonRendu();
+            this.getAssignmentsFromServicePourScrollInfiniRendu();
+          });
+        });
     } catch (err) {
       console.log("Erreur lors de l'exécution de la méthode");
     }
