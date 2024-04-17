@@ -50,6 +50,22 @@ export class AdminEtudiantsComponent implements OnInit {
 
   update(): void {
     this.saving = true;
+    this.adminService.updateEtudiant({
+      nom: this.nom,
+      prenom: this.prenom,
+      email: this.email,
+      niveau: this. niveau
+    }, this.idEtudiant).subscribe((data) => {
+      this.saving = false;
+      this.idEtudiant = '';
+      this.clearUpdate({
+        nom: '',
+        prenom: '',
+        email: '',
+        niveau: ''
+      });
+      this.resetList();
+    }) ;
   }
 
   // Afficher les champs modifiables

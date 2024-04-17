@@ -26,6 +26,11 @@ export class AdministrateurService {
         return this.http.get(environnement.baseUrl + environnement.baseProfesseur);
     }
 
+    // Modification d'un étudiant
+    updateEtudiant(etudiant: any, _id: string): Observable<any> {
+        return this.http.put(environnement.baseUrl + environnement.baseEtudiant + '/' + _id, etudiant);
+    }
+
     // Modification d'un professeur
     updateProfesseur(professeur: any, _id: string): Observable<any> {
         return this.http.put(environnement.baseUrl + environnement.baseProfesseur + '/' + _id, professeur);
