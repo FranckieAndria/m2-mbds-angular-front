@@ -1,0 +1,96 @@
+mat-spinner {
+  max-width: 20px;
+}
+
+mat-card-footer {
+  margin-top: 15px;
+}
+
+mat-card-footer a {
+  width: 100%;
+}
+
+mat-card {
+  width: 100% !important;
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  min-height: 300px !important;
+}
+
+mat-card-content {
+  text-align: center;
+}
+
+mat-form-field {
+  width: 60%;
+}
+
+.zone-input {
+  display: flex;
+  justify-content: start;
+}
+
+.zone-input p {
+  min-width: 150px;
+  text-align: right;
+  margin-right: 15px;
+  font-weight: 500;
+}
+
+.contact-professeur {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: underline;
+}
+
+.image-professeur {
+  justify-content: center;
+}
+
+.all-side {
+  width: 100%;
+  display: flex;
+}
+
+.one-side {
+  width: 50%;
+}
+
+.sublime-card {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.sublime-card img {
+  width: 45%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.sublime-card:hover img {
+  transform: scale(1.1);
+}
+
+.sublime-card mat-card-content p {
+  color: #636363;
+  margin-bottom: 0;
+}
+
+.sublime-card mat-card-actions {
+  padding: 16px;
+}
+
+.img-etudiant {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.nom-etudiant {
+  margin-top: -5%;
+}
