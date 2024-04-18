@@ -61,9 +61,9 @@ export class EtudiantService {
   getReport(studentInfo: any): void {
     const url = environnement.baseUrl + environnement.baseEtudiant + "/report" + this.createReportQueryParameter(studentInfo);
     this.http.get(url, { responseType: 'blob' }).subscribe((data: Blob) => {
-      const blob = new Blob([data], { type: 'application/pdf' });
-      const url = window.URL.createObjectURL(blob);
-      window.open(url);
+      const pdfBlob = new Blob([data], { type: 'application/pdf' });
+      const pdfUrl = window.URL.createObjectURL(pdfBlob);
+      window.open(pdfUrl);
     });
   }
 
