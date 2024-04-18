@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { PreloaderService } from 'app/shared/preload.service';
 
 @Component({
   selector: 'app-admin-professeur',
@@ -46,7 +47,7 @@ export class AdminProfesseurComponent implements OnInit {
   prenom: string = '';
   email: string = '';
 
-  constructor(private adminService: AdministrateurService, private _formBuilder: FormBuilder) { }
+  constructor(private adminService: AdministrateurService, private _formBuilder: FormBuilder, private preloader: PreloaderService) { }
 
   // Enregistrer les modifications
   update() {
@@ -94,6 +95,7 @@ export class AdminProfesseurComponent implements OnInit {
   resetList() {
     this.adminService.getProfesseurs().subscribe((data) => {
       this.professeurs = data;
+      this.preloader.hide();
     }) ;
   }
 

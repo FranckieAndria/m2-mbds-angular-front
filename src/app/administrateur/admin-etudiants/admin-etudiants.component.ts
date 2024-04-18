@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { PreloaderService } from 'app/shared/preload.service';
 
 @Component({
   selector: 'app-admin-etudiants',
@@ -46,7 +47,7 @@ export class AdminEtudiantsComponent implements OnInit {
   email: string = '';
   niveau: string = '';
 
-  constructor(private adminService: AdministrateurService, private _formBuilder: FormBuilder) { }
+  constructor(private adminService: AdministrateurService, private _formBuilder: FormBuilder, private preloader: PreloaderService) { }
 
   update(): void {
     this.saving = true;
@@ -97,6 +98,7 @@ export class AdminEtudiantsComponent implements OnInit {
   resetList(): void {
     this.adminService.getEtudiants().subscribe((data) => {
       this.etudiants = data;
+      this.preloader.hide();
     });
   }
 
