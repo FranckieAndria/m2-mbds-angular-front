@@ -1,7 +1,7 @@
 # Lancer le projet en Local
 
 ## Backend API nodejs
-- Cloner le repository GitHub : [Repository backend](https://github.comFranckieAndria/m2-mbds-angular-back.git)
+- Cloner le repository GitHub : [Repository backend](https://github.com/FranckieAndria/m2-mbds-angular-back.git)
 - Accéder au dossier `m2-mbds-angular-back`
 - Installer les dépendances en éxecutant la commande :
 ```
@@ -15,7 +15,7 @@ npm build
 ```
 npm start
 ```
-- L'application est maintenant lancée, API accèssible à l'adresse [http://localhost:8010](http://localhost:8010) :tada:
+- L'application backend est maintenant lancée :tada: , API accèssible à l'adresse [http://localhost:8010](http://localhost:8010) 
 
 ## Frontend ANGULAR
 - Cloner le repository GitHub en local : [Resitory frontend](https://github.com/FranckieAndria/m2-mbds-angular-front.git)
@@ -32,7 +32,7 @@ ng build
 ```
 ng serve
 ```
-- L'application est maintenant démarrée et accèssible depuis votre navigateur à l'adresse [http://localhost:4000](http://localhost:4000) :tada:
+- L'application Angular est maintenant démarrée :tada: , accèssible depuis votre navigateur à l'adresse [http://localhost:4000](http://localhost:4000)
 
 # Contributions au projet
 
