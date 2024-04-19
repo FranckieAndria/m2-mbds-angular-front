@@ -1,6 +1,6 @@
 export const environnement = {
     production: true,
-    baseUrl: 'https://m2-mbds-angular-back.onrender.com/api',
+    baseUrl: 'http://localhost:8010/api',
     baseEtudiant: '/etudiants',
     baseAssignment: '/assignments',
     baseProfesseur: '/professeurs',
