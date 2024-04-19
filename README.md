@@ -3,11 +3,7 @@
 ## Backend API nodejs
 - Cloner le repository GitHub : [Repository backend](https://github.com/FranckieAndria/m2-mbds-angular-back.git)
 - Accéder au dossier `m2-mbds-angular-back`
-- Installer les dépendances en éxecutant la commande :
-```
-npm install
-```
-- Effectuer un build du projet en éxecutant la commande :
+- Installer les dépendances définies dans le fichier `package.json` en éxecutant la commande :
 ```
 npm build
 ```
@@ -20,7 +16,7 @@ npm start
 ## Frontend ANGULAR
 - Cloner le repository GitHub en local : [Resitory frontend](https://github.com/FranckieAndria/m2-mbds-angular-front.git)
 - Accéder au dossier `m2-mbds-angular-front`
-- Installer les dépendances en éxecutant la commande :
+- Installer les dépendances définies dans le fichier `package.json` en éxecutant la commande :
 ```
 npm install
 ```
@@ -37,15 +33,15 @@ ng serve
 # Contributions au projet
 
 ## ANDRIAMALALA Franckie Antonnio
-** Gestion de login/password **
-    - Authentification à l'aide de JSON Web Tokens (JWT)
-    - Gestion des rôles et autorisations des utilisateurs
-    - Gestion des utilisateurs dans MongoDB
+**Gestion de login/password**
+- Authentification à l'aide de JSON Web Tokens (JWT)
+- Gestion des rôles et autorisations des utilisateurs
+- Gestion des utilisateurs dans MongoDB
 
-** Enregistrement d'un assignment **
-    - Utilisation d'un formulaire de type Stepper (en plusieurs étapes)
-    - Contôle des champs pour chaque étape et messages de notification (SnackBar Material)
-    - Proposition d'un choix fixe de matières et association automatique au professeur
+**Enregistrement d'un assignment**
+- Utilisation d'un formulaire de type Stepper (en plusieurs étapes)
+- Contôle des champs pour chaque étape et messages de notification (SnackBar Material)
+- Proposition d'un choix fixe de matières et association automatique au professeur
 
 
 ## RAKOTONAIVO Ambinintsoa
