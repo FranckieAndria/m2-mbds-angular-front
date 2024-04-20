@@ -56,7 +56,8 @@ Pour vous connecter, vous pouvez voir ci-dessous la liste des creditentials
 
 **Mise en place des templates**
 - Mise en page du menu avec `mat-sidenav` et `mat-icon`
-- Implémentation de la barre de navigation utilisant `mat-toolbar` 
+- Implémentation de la barre de navigation utilisant `mat-toolbar`
+- Mise en place du style de preload attendant le chargement des données
 
 **[ETUDIANT] Enregistrement d'un assignment**
 - Utilisation d'un formulaire de type Stepper (en plusieurs étapes) avec `mat-stepper`
@@ -78,13 +79,27 @@ Pour vous connecter, vous pouvez voir ci-dessous la liste des creditentials
 - Possibilité de trier ses assignments selon ses dates de création
 - Pagination des résultats utilisant `mat-paginator` et zone de recherche
 
+**[PROFESSEUR] Noter un assignment depuis la liste**
+- Utilisation de `mat-dialog` pour noter un assignment
+- Utilisation de `mat-slider` pour la valeur de la note
+- `Envoie de mail` automatique à l'éléve propriétaire de l'assignment
+
+**[PROFESSEUR] Liste et détails de ses étudiants**
+- Utilisation de `mat-card` dans la liste
+- Liste avec possibilité de voir les assignments pour chaque étudiant
+ 
+**[ADMINISTRATEUR] Liste et modification**
+- Liste de tous les `professeurs` avec possibilité de modification
+- Liste de tous les `étudiants` avec possibilité de modification
+
 ## RAKOTONAIVO Ambinintsoa
 
 ## Contributions communes
 **Conception de la base de données et des modèles**
-- Création des modèles de collections
+- Conception et création des modèles de collections sur `atlas`
 - Implémentation des Schémas dans le backend `nodejs` et `mongoose`
 - Complétion du fichier `readme`
+- Enregistrement et montage du `vidéo`
 
 **Population de la base de données**
 - Enregistrement de `1000 Assignments`
