@@ -44,7 +44,7 @@ Pour vous connecter, vous pouvez voir ci-dessous la liste des creditentials
 > - Toutes les adresses mails se terminent par `@gmail.com`
 > - Tous les mots de passe se terminent par `Pass` (sauf administrateur)
 <br><br>
-> Bien sûr, sauf si vous avez déjà modifié ses valeurs depuis **la partie administrateur** :wink:
+> Bien sûr, sauf si vous avez déjà modifié ses valeurs depuis **la partie administrateur** :writing_hand:
 
 # Contributions au projet
 

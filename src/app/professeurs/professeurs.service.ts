@@ -11,6 +11,11 @@ export class ProfesseurService {
 
     constructor(private http: HttpClient) { }
 
+    // Home - récupérer les infos pour la Home page
+    home(): Observable<any> {
+        return this.http.get<any>(environnement.baseUrl + environnement.baseProfesseur + "/home");
+    }
+
     // Noter - rendre un assignment
     noterRendre(id: string, rendu: boolean, note: number, remarque: string): Observable<any> {
         const url = environnement.baseUrl + environnement.baseAssignment + '/' + id;
