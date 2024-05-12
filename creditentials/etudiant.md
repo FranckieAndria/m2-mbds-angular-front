@@ -1,9 +1,5 @@
 # **Creditentials ETUDIANT**
 
-### Leola Posner
-- Nom d'utilisateur : `leola@gmail.com`
-- Mot de passe : `leolaPass`
-
 ### Halette Easeman
 - Nom d'utilisateur : `halette@gmail.com`
 - Mot de passe : `halettePass`
@@ -15,10 +11,6 @@
 ### Mollie Dally
 - Nom d'utilisateur : `mollie@gmail.com`
 - Mot de passe : `molliePass`
-
-### Ewan Ranscome
-- Nom d'utilisateur : `ewan@gmail.com`
-- Mot de passe : `ewanPass`
 
 ### Nelli Seyfart
 - Nom d'utilisateur : `nelli@gmail.com`

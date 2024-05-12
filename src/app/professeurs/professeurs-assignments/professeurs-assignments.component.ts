@@ -25,6 +25,7 @@ import { CdkDropList, DragDropModule } from '@angular/cdk/drag-drop';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { PreloaderService } from 'app/shared/preload.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-professeurs-assignments',
@@ -44,7 +45,8 @@ import { PreloaderService } from 'app/shared/preload.service';
     MatTableModule,
     MatPaginatorModule,
     MatListModule,
-    MatSliderModule
+    MatSliderModule,
+    MatIconModule
   ]
 })
 export class ProfesseursAssignmentsComponent implements OnInit {

@@ -8,9 +8,14 @@
   <hr>
 
 
-<div style="display: flex">
+<div style="display: flex; justify-content: space-between;">
   <div>
-    <h3>Non rendu :</h3>
+    <div class="my-statut-rendu-title-div">
+      <h3 class="my-statut-rendu-title non-rendu-title">
+        <mat-icon>not_interested</mat-icon> <span class="my-statut-rendu-title-text">Non rendu</span>
+      </h3>
+    </div>
+
     <cdk-virtual-scroll-viewport
       itemSize="50"
       cdkDropList
@@ -23,11 +28,16 @@
         class="example-item"
         cdkDrag
       >
-        <h3 mat-subheader>
-          Date limite: {{ a.dateDeRendu | date : "dd/MM/yy" }}
-        </h3>
         <mat-list-item>
-          <p>{{ a.titre }} ,rendu : {{ a.rendu }}</p>
+          <br>
+          <div class="titre-assignment-div">
+            <p class="titre-assignment">{{ a.titre }}</p>
+          </div>
+
+          <ul>
+            <li><b>Etudiant : </b> {{ a.etudiant[0].nom + ' ' + a.etudiant[0].prenom }}</li>
+            <li><b>Créé le : </b> {{ a.dateDeCreation | date : "dd-MM-yyyy" }}</li>
+          </ul>
         </mat-list-item>
         <mat-divider></mat-divider>
       </mat-list>
@@ -35,18 +45,28 @@
   </div>
 
   <div>
-    <h3>Rendu :</h3>
+    <div class="my-statut-rendu-title-div">
+      <h3 class="my-statut-rendu-title rendu-title">
+        <mat-icon>check</mat-icon> <span class="my-statut-rendu-title-text">Rendu</span>
+      </h3>
+    </div>
+
     <cdk-virtual-scroll-viewport
       itemSize="50"
       class="example-viewport"
       #scroller
     >
       <mat-list *cdkVirtualFor="let a of assignmentsRendu" class="example-item">
-        <h3 mat-subheader>
-          Date limite: {{ a.dateDeRendu | date : "dd/MM/yy" }}
-        </h3>
         <mat-list-item>
-          <p>{{ a.titre }} ,rendu : {{ a.rendu }}</p>
+          <br>
+          <div class="titre-assignment-div">
+            <p class="titre-assignment">{{ a.titre }}</p>
+          </div>
+
+          <ul>
+            <li><b>Etudiant : </b> {{ a.etudiant[0].nom + ' ' + a.etudiant[0].prenom }}</li>
+            <li><b>Créé le : </b> {{ a.dateDeCreation | date : "dd-MM-yyyy" }}</li>
+          </ul>
         </mat-list-item>
         <mat-divider></mat-divider>
       </mat-list>

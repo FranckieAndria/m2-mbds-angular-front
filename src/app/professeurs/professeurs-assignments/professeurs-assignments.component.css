@@ -1,13 +1,69 @@
+/* Titre en haut de chaque section */
+.my-statut-rendu-title-div {
+  display: flex;
+  justify-content: center;
+}
+
+.my-statut-rendu-title {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2%;
+  border-radius: 15px;
+  margin-left: -8%;
+}
+
+.my-statut-rendu-title-text {
+  margin-left: 3%;
+}
+
+.non-rendu-title {
+  border: 1px solid #FFC107;
+  background-color: #FFC107;
+}
+
+.rendu-title {
+  border: 1px solid #28A745;
+  background-color: #28A745;
+  color: white;
+}
+
+.titre-assignment {
+  font-weight: bold;
+  text-align: center;
+  width: 50%;
+  padding: 2%;
+  background-color: rgba(108,117,125, 0.2);  
+}
+
+.titre-assignment-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  margin-bottom: 10%;
+}
+
+li {
+  font-size: 14px;
+}
+
+mat-list-item {
+  min-height: 300px !important;
+}
+
 /* Assuming you have a global CSS file or component-specific styles */
 .grid-container {
-    display: flex;
-    justify-content: space-between;
-    /* Add any other container-level styles you need */
-  }
+  display: flex;
+  justify-content: space-between;
+}
 
 /* Amélioration du style pour la liste virtuelle */
 .example-viewport {
-  height: 300px;
+  height: 550px;
   width: 600px;
   border: 1px solid #e0e0e0; /* Utilisation d'une couleur plus douce pour la bordure */
   overflow: auto; /* Ajout d'un défilement pour les éléments qui dépassent la hauteur */
@@ -20,7 +76,7 @@
 
 /* Style pour chaque élément de la liste */
 .example-item {
-  height: 50px;
+  height: 125px;
   padding: 10px; /* Espacement interne pour un meilleur espacement du contenu */
   display: flex; /* Utilisation de flexbox pour aligner le contenu */
   align-items: center; /* Centrage vertical du contenu */
@@ -43,7 +99,7 @@
 
 .example-item.cdk-drag-preview {
   /* Style for the dragged element */
-  background-color: #f0f0f0; /* Change to your desired color */
+  background-color: #f0f0f0;
   border: 2px dashed #310492;
   border-radius: 10px; /* Coins arrondis pour un aspect moderne */
   opacity: 0.7;
@@ -60,7 +116,7 @@
 
 .example-item.cdk-drag-placeholder {
   /* Style for the placeholder (empty space) during drag */
-  background-color: #ddd; /* Change to your desired color */
+  background-color: #ddd;
   border: 2px dashed #aaa;
   opacity: 0.6;
 }
