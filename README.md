@@ -28,7 +28,7 @@ ng build
 ```
 ng serve
 ```
-- L'application Angular est maintenant démarrée :tada: , accèssible depuis votre navigateur à l'adresse [http://localhost:4000](http://localhost:4000) <br>
+- L'application Angular est maintenant démarrée :tada: , accèssible depuis votre navigateur à l'adresse [http://localhost:4200](http://localhost:4200) <br>
 > [!NOTE]
 > Si vous souhaitez utiliser l'API de votre application local :
 > - Ouvrez le fichier `src/environnement/environnement.ts`
@@ -79,6 +79,10 @@ Pour vous connecter, vous pouvez voir ci-dessous la liste des creditentials
 - Possibilité de trier ses assignments selon ses dates de création
 - Pagination des résultats utilisant `mat-paginator` et zone de recherche
 
+**[ETUDIANT] Mise en place de la Home page**
+- Présentation des données sous forme de tableau triable avec `mat-table`
+- Affichage des statistiques sur les Assignments de l'étudiant
+
 **[PROFESSEUR] Noter un assignment depuis la liste**
 - Utilisation de `mat-dialog` pour noter un assignment
 - Utilisation de `mat-slider` pour la valeur de la note
@@ -93,16 +97,22 @@ Pour vous connecter, vous pouvez voir ci-dessous la liste des creditentials
 - Liste de tous les `étudiants` avec possibilité de modification
 
 ## RAKOTONAIVO Ambinintsoa
+- Drag & Drop  + Rendu on Drop
+- Home page Administrateur
+- Home page Professeur
+- Liste Assignment avec suppressin
 
 ## Contributions communes
 **Conception de la base de données et des modèles**
 - Conception et création des modèles de collections sur `atlas`
 - Implémentation des Schémas dans le backend `nodejs` et `mongoose`
-- Complétion du fichier `readme`
-- Enregistrement et montage du `vidéo`
 
 **Population de la base de données**
 - Enregistrement de `1000 Assignments`
 - Enregistrement de `20 Etudiants`
 - Enregistrement de `05 Professeurs` avec `05 matières`
 - Enregistrement de `01 Administrateur`
+
+**Documentation du projet**
+- Complétion du fichier `readme`
+- Enregistrement et montage du `vidéo`
