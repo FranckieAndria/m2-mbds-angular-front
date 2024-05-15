@@ -8,6 +8,35 @@ mat-form-field {
   width: 80% !important;
 }
 
+.card-matiere-enseigne {
+  width: 45%;
+  height: 15%;
+  background-color: rgb(0, 0, 0);
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20%;
+  margin-left: 20%;
+}
+
+.plus-animation:hover {
+  animation: zoomIn 0.5s ease-in-out forwards;
+}
+
+.matiere-name {
+  color: white !important;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
 h2 {
   text-decoration: underline;
 }
@@ -21,7 +50,6 @@ h2 {
   color: #3f51b5;
   font-size: 26px;
   font-weight: 500;
-  text-decoration: underline;
   margin-bottom: 8%;
 }
 

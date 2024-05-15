@@ -32,18 +32,10 @@
   </mat-grid-tile>
 
   <mat-grid-tile>
-    <mat-card class="my-card">
-      <mat-card-header>
-        <span class="mat-card-title">Enseigne la matière</span>
+    <mat-card class="my-card plus-animation" style="background-image:url({{ matiereImage }})">
+      <mat-card-header class="card-matiere-enseigne">
+        <span class="mat-card-title matiere-name">{{ matiere }}</span>
       </mat-card-header>
-      <mat-card-content>
-        <div class="matiere-image-div">
-          <img src="{{ matiereImage }}" class="matiere-image" />
-        </div>
-        <div class="info-grid">
-          {{ matiere }}
-        </div>
-      </mat-card-content>
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>
@@ -56,7 +48,7 @@
   <mat-grid-tile>
     <mat-card class="my-card">
       <mat-card-header>
-        <span class="mat-card-title">Nombre Total</span>
+        <span class="mat-card-title">Assignment Total</span>
       </mat-card-header>
 
       <mat-card-content class="my-statistic"> {{ total }} </mat-card-content>
