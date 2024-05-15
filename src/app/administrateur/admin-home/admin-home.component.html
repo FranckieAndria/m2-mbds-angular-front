@@ -1,3 +1,57 @@
-<p>
-  admin-home works!
-</p>
+<div id="globalLoader" class="global-loader"><h1>CHARGEMENT ...</h1></div>
+
+<h2>Les matières</h2>
+
+  <mat-grid-list cols="3" rowHeight="2:1">
+    <mat-grid-tile *ngFor="let p of professeurs">
+      <mat-card class="my-card">
+        <mat-card-header>
+          <span class="mat-card-title">{{ p?.matiere?.intitule }}</span>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="matiere-image-div">
+            <img [src]="p?.matiere?.imagePath" class="matiere-image" alt="Image de la matière" />
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+
+<br><br><br>
+
+
+<h2>Statistique sur tous les assignements</h2>
+<mat-grid-list cols="3" rowHeight="2:1">
+  <mat-grid-tile>
+    <mat-card class="my-card">
+      <mat-card-header>
+        <span class="mat-card-title">Nombre Total</span>
+      </mat-card-header>
+
+      <mat-card-content class="my-statistic"> {{total}} </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-card class="my-card">
+      <mat-card-header>
+        <span class="mat-card-title rendu">Assignments Rendus</span>
+      </mat-card-header>
+
+      <mat-card-content class="my-statistic rendu"> {{rendu}} </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-card class="my-card">
+      <mat-card-header>
+        <span class="mat-card-title non-rendu"
+          >Assignments Non-rendus</span
+        >
+      </mat-card-header>
+
+      <mat-card-content class="my-statistic non-rendu"> {{non_rendu}} </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

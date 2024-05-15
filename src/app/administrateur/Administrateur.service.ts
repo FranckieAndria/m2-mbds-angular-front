@@ -16,6 +16,11 @@ export class AdministrateurService {
         return this.http.get(environnement.baseUrl + environnement.baseAdministrateur + '/checker');
     }
 
+    // Home - récupérer les infos pour la Home page
+    home(): Observable<any> {
+        return this.http.get<any>(environnement.baseUrl + environnement.baseAdministrateur + "/home");
+    }
+
     // Liste des étudiants
     getEtudiants(): Observable<any> {
         return this.http.get(environnement.baseUrl + environnement.baseEtudiant);

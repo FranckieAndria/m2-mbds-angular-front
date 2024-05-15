@@ -1,0 +1,62 @@
+mat-card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  mat-form-field {
+    width: 80% !important;
+  }
+  
+  h2 {
+    text-decoration: underline;
+  }
+  
+  .matiere-image-div {
+      display: flex;
+      justify-content: center;
+  }
+  
+  .mat-card-title {
+    color: #3f51b5;
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 8%;
+  }
+  
+  .my-card {
+    width: 90%;
+    height: 95%;
+  }
+  
+  .p-label {
+    min-width: 25%;
+    text-align: end;
+    padding-right: 3%;
+  }
+  
+  .big-profil {
+    max-height: 150%;
+  }
+  
+  .matiere-image {
+    max-width: 40%;
+  }
+  
+  .my-statistic {
+    min-height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    font-size: 62px;
+    color: #3F51B5;
+  }
+  
+  .rendu {
+    color: #4CAF50;
+  }
+  
+  .non-rendu {
+    color: #F59D17;
+  }
