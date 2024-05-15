@@ -12,8 +12,8 @@
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                     <mat-label>Mot de passe</mat-label>
-                    <input matInput [(ngModel)]="credentials.password">
-                    <mat-icon matSuffix>remove_red_eye</mat-icon>
+                    <input type="password" matInput [(ngModel)]="credentials.password">
+                    <mat-icon matSuffix>lock</mat-icon>
                 </mat-form-field>
 
             @if (logging) {

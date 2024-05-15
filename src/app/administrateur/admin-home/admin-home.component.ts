@@ -44,7 +44,6 @@ export class AdminHomeComponent implements OnInit {
       this.rendu = data.rendu || 0;
       this.non_rendu = data.non_rendu || 0;
       this.professeurs = data.professeurs;
-      console.log(this.professeurs);
       this.preloader.hide();
     })
   }

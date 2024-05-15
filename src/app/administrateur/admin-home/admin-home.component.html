@@ -4,15 +4,10 @@
 
   <mat-grid-list cols="3" rowHeight="2:1">
     <mat-grid-tile *ngFor="let p of professeurs">
-      <mat-card class="my-card">
+      <mat-card class="my-card" style="background-image:url({{p?.matiere?.imagePath}});">
         <mat-card-header>
           <span class="mat-card-title">{{ p?.matiere?.intitule }}</span>
         </mat-card-header>
-        <mat-card-content>
-          <div class="matiere-image-div">
-            <img [src]="p?.matiere?.imagePath" class="matiere-image" alt="Image de la matière" />
-          </div>
-        </mat-card-content>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
@@ -24,19 +19,19 @@
 <h2>Statistique sur tous les assignements</h2>
 <mat-grid-list cols="3" rowHeight="2:1">
   <mat-grid-tile>
-    <mat-card class="my-card">
+    <mat-card class="my-card-stat">
       <mat-card-header>
-        <span class="mat-card-title">Nombre Total</span>
+        <span class="mat-card-title total">Nombre Total</span>
       </mat-card-header>
 
-      <mat-card-content class="my-statistic"> {{total}} </mat-card-content>
+      <mat-card-content class="my-statistic total"> {{total}} </mat-card-content>
     </mat-card>
   </mat-grid-tile>
 
   <mat-grid-tile>
-    <mat-card class="my-card">
+    <mat-card class="my-card-stat">
       <mat-card-header>
-        <span class="mat-card-title rendu">Assignments Rendus</span>
+        <span class="mat-card-title rendu">Assignements Rendus</span>
       </mat-card-header>
 
       <mat-card-content class="my-statistic rendu"> {{rendu}} </mat-card-content>
@@ -44,10 +39,10 @@
   </mat-grid-tile>
 
   <mat-grid-tile>
-    <mat-card class="my-card">
+    <mat-card class="my-card-stat">
       <mat-card-header>
         <span class="mat-card-title non-rendu"
-          >Assignments Non-rendus</span
+          >Assignements Non-rendus</span
         >
       </mat-card-header>
 
