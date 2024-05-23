@@ -113,6 +113,7 @@ Pour vous connecter, vous pouvez voir ci-dessous la liste des creditentials
 - Enregistrement de `05 Professeurs` avec `05 matières`
 - Enregistrement de `01 Administrateur`
 
-**Documentation du projet**
+**Documentation et hebergement du projet**
 - Complétion du fichier `readme`
 - Enregistrement et montage du `vidéo`
+- Hebergement du Backend et Frontend sur Render
