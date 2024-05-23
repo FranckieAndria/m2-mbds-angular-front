@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminEtudiantsComponent } from './admin-etudiants/admin-etudiants.component';
 import { AdminProfesseurComponent } from './admin-professeur/admin-professeur.component';
+import { AdminAssignmentComponent } from './admin-assignment/admin-assignment.component';
 
 const adminRoutes: Routes = [
   {
@@ -23,6 +24,10 @@ const adminRoutes: Routes = [
   {
     path: 'professeurs',
     component: AdminProfesseurComponent
+  },
+  {
+    path: 'assignments',
+    component: AdminAssignmentComponent
   }
 ];
 

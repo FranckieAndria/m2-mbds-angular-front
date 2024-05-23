@@ -1,0 +1,140 @@
+mat-spinner {
+  max-width: 20px;
+}
+
+mat-card-footer {
+  margin-top: 15px;
+}
+
+mat-card-footer a {
+  width: 100%;
+}
+
+mat-card {
+  width: 100% !important;
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  min-height: 300px !important;
+}
+
+mat-card-content {
+  text-align: center;
+}
+
+mat-form-field {
+  width: 60%;
+}
+
+.zone-input {
+  display: flex;
+  justify-content: start;
+}
+
+.zone-input p {
+  min-width: 150px;
+  text-align: right;
+  margin-right: 15px;
+  font-weight: 500;
+}
+
+.contact-professeur {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: underline;
+}
+
+.image-professeur {
+    justify-content: center;
+}
+
+.all-side {
+  width: 100%;
+  display: flex;
+  margin-top: 3%;
+}
+
+.one-side {
+  width: 50%;
+}
+
+.sublime-card {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.sublime-card img {
+  width: 45%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.sublime-card:hover img {
+  transform: scale(1.1);
+}
+
+.sublime-card mat-card-content p {
+  color: #636363;
+  margin-bottom: 0;
+}
+
+.sublime-card mat-card-actions {
+  padding: 16px;
+}
+
+.img-etudiant {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.nom-etudiant {
+  margin-top: -5%;
+}
+
+.search-input {
+  width: 200px;
+  /* Largeur du champ de recherche */
+  padding: 10px;
+  /* Espacement interne */
+  border: 2px solid #ccc;
+  /* Bordure grise */
+  border-radius: 15px;
+  /* Coins arrondis */
+  font-size: 16px;
+  /* Taille de police */
+  transition: border-color 0.3s ease;
+  /* Transition pour l'effet hover */
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Effet de survol */
+.search-input:hover {
+  border-color: #0074d9;
+  /* Couleur de la bordure au survol */
+  box-shadow: 0 0 5px rgba(0, 116, 217, 0.5);
+  /* Ombre légère */
+}
+
+/* Placeholder stylisé */
+.search-input::placeholder {
+  color: #888;
+  /* Couleur du texte de l'indicateur de saisie */
+}
+
+.zone-input {
+  display: flex;
+  justify-content: start;
+}
+
+.zone-input p {
+  min-width: 150px;
+  text-align: right;
+  margin-right: 15px;
+  font-weight: 500;
+}

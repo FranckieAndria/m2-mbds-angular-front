@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>
+  <mat-icon>bookmark</mat-icon>Confirmation
+</h2>
+
+<mat-dialog-content class="mat-typography">
+  <p>Voulez-vous vraiment supprimer : <i>{{ assignment.assign.titre }}</i> ?</p>
+  <mat-divider></mat-divider>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  @if (isOperating) {
+    <button
+      mat-stroked-button
+      color="primary"
+      aria-label="Traitement en cours ..."
+    >
+      <mat-spinner></mat-spinner>
+    </button>
+  } @else {
+      @if (!isSuccess) {
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+        <mat-icon>cancel</mat-icon> Annuler et fermer
+      </button>
+      <button mat-flat-button color="warn" (click)="supprimer()">
+        <mat-icon>delete</mat-icon> Supprimer
+      </button>
+    } @else {
+      <button mat-flat-button [mat-dialog-close]="true" color="primary">
+        <mat-icon>check_circle</mat-icon> Terminer
+      </button>
+    }
+  }
+</mat-dialog-actions>

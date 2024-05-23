@@ -55,6 +55,11 @@ export class AdministrateurComponent implements OnInit {
         link: 'etudiants'
       },
       {
+        label: 'Assignements',
+        icon: 'assignment',
+        link: 'assignments'
+      },
+      {
         label: 'Se déconnecter',
         icon: 'logout',
         link: '/logout'

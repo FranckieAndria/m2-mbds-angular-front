@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Assignment } from "app/shared/models/assignment.model";
 import { environnement } from "environnement/environnement";
 import { Observable } from "rxjs";
 
@@ -31,6 +32,15 @@ export class AdministrateurService {
         return this.http.get(environnement.baseUrl + environnement.baseProfesseur);
     }
 
+    // Liste des assignments
+    getAssignments(): Observable<any> {
+        return this.http.get(environnement.baseUrl + environnement.baseAssignment);
+    }
+
+    getAssignmentsPagines(page:number, limit:number):Observable<any> {
+        return this.http.get<Assignment[]>(environnement.baseUrl + environnement.baseAssignment + "?page=" + page + "&limit=" + limit);
+    }
+
     // Modification d'un étudiant
     updateEtudiant(etudiant: any, _id: string): Observable<any> {
         return this.http.put(environnement.baseUrl + environnement.baseEtudiant + '/' + _id, etudiant);
@@ -39,6 +49,15 @@ export class AdministrateurService {
     // Modification d'un professeur
     updateProfesseur(professeur: any, _id: string): Observable<any> {
         return this.http.put(environnement.baseUrl + environnement.baseProfesseur + '/' + _id, professeur);
+    }
+
+    //Modification d'un assignment
+    updateAssignment(assignment:any,_id: string): Observable<any> {
+        return this.http.put(environnement.baseUrl + environnement.baseAssignment + '/modifier/' + _id,assignment);
+    }
+
+    deleteAssignment(_id:string): Observable<any>{
+        return this.http.delete(environnement.baseUrl + environnement.baseAssignment + '/' + _id);
     }
 
 }
