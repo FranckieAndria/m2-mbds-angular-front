@@ -31,7 +31,11 @@ export class LoginComponent {
   user_role_professeur = 'PROFESSEUR' ;
   
 
-  credentials: Credentials = {email: '', password: ''};
+  credentials: Credentials = {
+    email: 'meson@gmail.com', 
+    password: 'mesonPass'
+  };
+
   error_login: Boolean = false;
 
   constructor(private authService: AuthService, private route: Router) {}
@@ -40,6 +44,13 @@ export class LoginComponent {
     this.error_login = false;
     this.user_role = this.user_role == 'etudiants' ? 'professeurs' : 'etudiants' ;
     this.user_role_interface = this.user_role_interface == this.user_role_etudiant ? this.user_role_professeur : this.user_role_etudiant ;
+    if (this.user_role == 'etudiants') {
+      this.credentials.email = 'meson@gmail.com',
+      this.credentials.password = 'mesonPass'
+    } else {
+      this.credentials.email = 'mata@gmail.com',
+      this.credentials.password = 'mataPass'
+    }
   }
 
   getOption() {

@@ -79,10 +79,6 @@ Pour vous connecter, vous pouvez voir ci-dessous la liste des creditentials
 - Possibilité de trier ses assignments selon ses dates de création
 - Pagination des résultats utilisant `mat-paginator` et zone de recherche
 
-**[ETUDIANT] Mise en place de la Home page**
-- Présentation des données sous forme de tableau triable avec `mat-table`
-- Affichage des statistiques sur les Assignments de l'étudiant
-
 **[PROFESSEUR] Noter un assignment depuis la liste**
 - Utilisation de `mat-dialog` pour noter un assignment
 - Utilisation de `mat-slider` pour la valeur de la note
@@ -97,10 +93,21 @@ Pour vous connecter, vous pouvez voir ci-dessous la liste des creditentials
 - Liste de tous les `étudiants` avec possibilité de modification
 
 ## RAKOTONAIVO Ambinintsoa
-- Drag & Drop  + Rendu on Drop
-- Home page Administrateur
-- Home page Professeur
-- Liste Assignment avec suppressin
+**[ETUDIANT] Mise en place de la page d'accueil**
+- Présentation des données sous forme de tableau triable avec `mat-table`
+- Affichage des statistiques sur les Assignments de l'étudiant
+
+**[PROFESSEUR] Liste des assignments sur 02 onglets séparés**
+- Liste des assignments rendu et non-rendu avec `scroll infini`
+- Rendu des assignments par `Drag & Drop`
+
+**[ADMINISTRATEUR] Mise en place de la page d'accueil**
+- Liste de toutes les matières
+- Statistique globale de tous les assignments
+
+**[PROFESSEUR] Mise en place de la page d'accueil**
+- Informations sur le professeur et de sa matière
+- Affichage des statistiques sur les Assignments du professeur
 
 ## Contributions communes
 **Conception de la base de données et des modèles**
@@ -116,4 +123,4 @@ Pour vous connecter, vous pouvez voir ci-dessous la liste des creditentials
 **Documentation et hebergement du projet**
 - Complétion du fichier `readme`
 - Enregistrement et montage du `vidéo`
-- Hebergement du Backend et Frontend sur Render
+- Hebergement du Backend et Frontend sur `Render`
