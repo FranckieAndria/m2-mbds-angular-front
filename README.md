@@ -5,7 +5,7 @@
 - Accédez au dossier `m2-mbds-angular-back`
 - Installez les dépendances définies dans le fichier `package.json` en éxecutant la commande :
 ```
-npm build
+npm run build
 ```
 - Démarrez l'application en éxecutant la commande : 
 ```
